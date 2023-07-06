@@ -1,0 +1,92 @@
+.login-screen {
+    justify-content: center;
+    display: flex;
+}
+
+.login-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 420px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.logo-container {
+    padding-bottom: 40px;
+    padding-top: 100px;
+}
+
+.logo {
+    width: 100%;
+}
+
+.input-container {
+    width: 100%;
+    padding-top: 30px;
+    font-family: inherit;
+    color: #121B28;
+}
+
+.MuiSvgIcon-root {
+    fill: #121B28;
+}
+
+/* .MuiInputBase-input {
+    padding-left: 5px;
+} */
+
+.MuiInputBase-root {
+    border-radius: 25px;
+    background-color: #D3CCCC;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: inherit;
+}
+
+.error-msg {
+    color: red;
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.button-container {
+    padding-top: 70px;
+}
+ 
+.login-button {
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #D3CCCC;
+    color: #121B28;
+    font-weight: 500;
+    border: none;
+    box-shadow: none;
+    text-transform: none;
+    font-family: inherit;
+    font-size: 22px;
+    cursor: pointer;
+    &:hover {
+        background-color: #121B28;
+        color: #D3CCCC;
+    };
+}
+
+.forgot-link{
+    display: flex;
+    justify-content: right;
+    padding-top: 3px;
+}
+
+a {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    color: #121B28;
+    cursor: pointer;
+}
+
+
