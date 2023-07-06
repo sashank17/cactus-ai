@@ -43,13 +43,12 @@ const LoginPage = (props) => {
 		const currentUser = database.find((user) => user.username === username && user.password === password)
 
 		if(!currentUser) {
+			// Invalid User
 			setErrorMessages({name: "credential", message: errors.credential})
 		}
 		else {
-			// Correct User
 			setErrorMessages({})
-			// console.log("logged in!")
-			// console.log(username, password)
+			props.setIsLoggedIn(true)
 		}
     }
 
