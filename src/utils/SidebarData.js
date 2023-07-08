@@ -4,11 +4,11 @@ export const SidebarData = [
     {
         title: 'Dashboard',
         path: '/',
-        icon: <HomeRounded />,
+        icon: <HomeRounded sx={{fontSize: '20px'}}/>,
     },
     {
         title: 'Settings',
         path: '/settings',
-        icon: <SettingsRounded />,
+        icon: <SettingsRounded sx={{fontSize: '20px'}}/>,
     }
 ]
