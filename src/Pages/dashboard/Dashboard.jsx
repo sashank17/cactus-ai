@@ -4,7 +4,7 @@ import StatBox from '../../Components/StatBox'
 import { StatBoxData } from '../../utils/StatBoxData'
 import LineChart from '../../Components/LineChart'
 import BarChart from '../../Components/BarChart'
-import { Box, Button, IconButton, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { PaidRounded, PointOfSaleRounded } from '@mui/icons-material'
 import styled from 'styled-components'
 
@@ -22,11 +22,13 @@ const StatBoxGrid = styled(Box)`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border-radius: 20px;
 `
 const LineChartGrid = styled(Box)`
 	grid-column: span 8;
 	grid-row: span 2;
 	background-color: #121B28;
+	border-radius: 20px;
 `
 const ChartHeader = styled(Box)`
 	margin-top: 18px;
@@ -39,6 +41,7 @@ const BarChartGrid = styled(Box)`
 	grid-column: span 4;
 	grid-row: span 2;
 	background-color: #121B28;
+	border-radius: 20px;
 `
 
 const Dashboard = (props) => {
