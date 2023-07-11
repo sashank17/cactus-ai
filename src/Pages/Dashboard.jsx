@@ -50,7 +50,7 @@ const BarChartGrid = styled(Box)`
 const Dashboard = (props) => {
   return (
 	<>
-		<Header title="Dashboard" user="Admin"/>
+		<Header title="Dashboard" user={props.user}/>
 		<DashboardGrid>
 			{StatBoxData.map((item, index) => {
 				return (

@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState("")
 
   return (
     <>
@@ -16,13 +17,13 @@ function App() {
 				<Sidebar setIsLoggedIn={setIsLoggedIn}/>
 				<main className='content'>
 					<Routes>
-						<Route path='/' element={<Dashboard />} />
-						<Route path='/settings' element={<Settings />} />
+						<Route path='/' element={<Dashboard user={user}/>} />
+						<Route path='/settings' element={<Settings user={user} />} />
 					</Routes>
 				</main>
 			</div>
 			)
-			: (<LoginPage setIsLoggedIn={setIsLoggedIn}/>)
+			: (<LoginPage setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>)
 		}
     </>
   );

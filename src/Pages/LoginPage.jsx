@@ -48,6 +48,7 @@ const LoginPage = (props) => {
 		}
 		else {
 			setErrorMessages({})
+			props.setUser(username)
 			props.setIsLoggedIn(true)
 		}
     }
