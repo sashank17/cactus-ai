@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 
 const HeaderWrapper = styled(Box)`
-	margin: 20px 15px 10px;
+	margin: 20px 15px 12px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,7 +21,7 @@ const AccountWrapper = styled(Box)`
 `
 
 const headerFontStyle = {
-	color: '#121B28',
+	color: '#ffffff',
 	fontWeight: 'bold',
 	fontFamily: 'inherit',
 	paddingRight: '10px'
@@ -33,7 +33,7 @@ const Header = (props) => {
         <Typography variant='h4' style={headerFontStyle}>{props.title}</Typography>
 		<AccountWrapper>
 			<Typography variant='h6' style={headerFontStyle}>{props.user}</Typography>
-        	<AccountCircleRounded />
+        	<AccountCircleRounded sx={{color: '#ffffff'}}/>
 		</AccountWrapper>
     </HeaderWrapper>
   )

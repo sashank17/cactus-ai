@@ -1,9 +1,12 @@
 import React from 'react'
-import Header from '../../Components/Header'
-import StatBox from '../../Components/StatBox'
-import { StatBoxData } from '../../utils/StatBoxData'
-import LineChart from '../../Components/LineChart'
-import BarChart from '../../Components/BarChart'
+import Header from '../Components/Header'
+import StatBox from '../Components/StatBox'
+import { StatBoxData } from '../utils/StatBoxData'
+import LineChart from '../Components/LineChart'
+import BarChart from '../Components/BarChart'
+import ImageCarousel from '../Components/ImageCarousel'
+import { BrandsData } from '../utils/CarouselData'
+import { RetailersData } from '../utils/CarouselData'
 import { Box, Typography } from '@mui/material'
 import { PaidRounded, PointOfSaleRounded } from '@mui/icons-material'
 import styled from 'styled-components'
@@ -12,8 +15,8 @@ import styled from 'styled-components'
 const DashboardGrid = styled(Box)`
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-auto-rows: 140px;
-	gap: 20px;
+	grid-auto-rows: 120px;
+	gap: 17px;
 	margin: 0px 15px;
 `
 const StatBoxGrid = styled(Box)`
@@ -31,7 +34,7 @@ const LineChartGrid = styled(Box)`
 	border-radius: 20px;
 `
 const ChartHeader = styled(Box)`
-	margin-top: 18px;
+	margin-top: 10px;
 	padding: 0px 30px;
 	display: flex;
 	justify-content: space-between;
@@ -71,7 +74,7 @@ const Dashboard = (props) => {
 						<PaidRounded sx={{color: '#9CFCD8', fontSize: '36px'}}/>
 					</Box>
 				</ChartHeader>
-				<Box height="250px" ml="-20px" mt="-15px">
+				<Box height="225px" ml="-20px" mt="-35px">
 					<LineChart />
 				</Box>
 			</LineChartGrid>
@@ -90,10 +93,13 @@ const Dashboard = (props) => {
 						<PointOfSaleRounded sx={{color: '#9CFCD8', fontSize: '36px'}} />
 					</Box>
 				</ChartHeader>
-				<Box height="250px" ml="-20px" mt="-15px">
+				<Box height="225px" ml="-20px" mt="-35px">
 					<BarChart />
 				</Box>
 			</BarChartGrid>
+
+			<ImageCarousel title='Top Brands this week' data={BrandsData}/>
+			<ImageCarousel title='Top Retailers this week' data={RetailersData}/>
 
 		</DashboardGrid>
 	</>

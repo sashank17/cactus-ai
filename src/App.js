@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import LoginPage from "./Pages/LoginPage"
-import Dashboard from './Pages/dashboard/Dashboard'
-import Settings from './Pages/settings/Settings'
-import Sidebar from './Pages/global/Sidebar'
+import Dashboard from './Pages/Dashboard'
+import Settings from './Pages/Settings'
+import Sidebar from './Components/global/Sidebar'
 import { Routes, Route } from "react-router-dom"
 
 
@@ -13,7 +13,7 @@ function App() {
     <>
 		{ isLoggedIn ? (
 			<div className='app'>
-				<Sidebar />
+				<Sidebar setIsLoggedIn={setIsLoggedIn}/>
 				<main className='content'>
 					<Routes>
 						<Route path='/' element={<Dashboard />} />

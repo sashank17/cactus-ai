@@ -1,5 +1,4 @@
 import React from 'react'
-import Sidebar from '../Pages/global/Sidebar'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -11,7 +10,6 @@ const MenuItemWrapper = styled.div`
     padding: 10px 25px;
     list-style: none;
     height: 50px;
-    width: 100%;
     cursor: pointer;
 `
 const MenuItemLink= styled(NavLink)`
@@ -22,7 +20,11 @@ const MenuItemLink= styled(NavLink)`
     width: 100%;
     color: #e1e9fc;
 
-    &:hover, &:active {
+    &:hover {
+        color: #9CFCD8;
+    }
+
+    &.active {
         background: #ffffff;
         color: #121B28;
         border-radius: 12px;
@@ -36,8 +38,8 @@ const MenuItemLabel = styled.span`
 const MenuItem = (props) => {
   return (
     <>
-        <MenuItemWrapper>
-            <MenuItemLink to={props.item.path} activeStyle={{background: '#ffffff', color: '#121B28', borderRadius: '12px'}}>
+        <MenuItemWrapper onClick={props.setSelected(props.item.title)}>
+            <MenuItemLink to={props.item.path}>
                 {props.item.icon}
                 <MenuItemLabel>
                     {props.item.title}

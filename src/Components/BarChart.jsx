@@ -99,6 +99,8 @@ const BarChart = () => {
             legendPosition: 'middle',
             legendOffset: -40
         }}
+        enableGridX={false}
+        enableGridY={false}
         enableLabel={false}
         labelSkipWidth={5}
         labelSkipHeight={12}
