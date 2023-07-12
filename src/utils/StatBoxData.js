@@ -10,18 +10,18 @@ export const StatBoxData = [
         icon: <PointOfSaleRounded sx={{color: '#9CFCD8', fontSize: '24px'}}/>
     },
     {
-        title: '99',
-        subtitle: 'Profiles Added',
-        progress: '0.50',
-        percentIncrease: '+18%',
-        icon: <PersonAddRounded sx={{color: '#9CFCD8', fontSize: '24px'}}/>
-    },
-    {
         title: '43',
         subtitle: 'Total Running Transactions',
         progress: '0.42',
         percentIncrease: '+60%',
         icon: <ReceiptRounded sx={{color: '#9CFCD8', fontSize: '24px'}}/>
+    },
+    {
+        title: '99',
+        subtitle: 'Profiles Added',
+        progress: '0.50',
+        percentIncrease: '+18%',
+        icon: <PersonAddRounded sx={{color: '#9CFCD8', fontSize: '24px'}}/>
     },
     {
         title: '54',
