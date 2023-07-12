@@ -28,15 +28,15 @@ const headerFontStyle = {
 }
 
 const Header = (props) => {
-  return (
-    <HeaderWrapper>
-        <Typography variant='h4' style={headerFontStyle}>{props.title}</Typography>
-		<AccountWrapper>
-			<Typography variant='h6' style={headerFontStyle}>{props.user}</Typography>
-        	<AccountCircleRounded sx={{color: '#ffffff'}}/>
-		</AccountWrapper>
-    </HeaderWrapper>
-  )
+	return (
+		<HeaderWrapper>
+			<Typography variant='h4' style={headerFontStyle}>{props.title}</Typography>
+			<AccountWrapper>
+				<Typography variant='h6' style={headerFontStyle}>{props.user}</Typography>
+				<AccountCircleRounded sx={{color: '#ffffff'}}/>
+			</AccountWrapper>
+		</HeaderWrapper>
+	)
 }
 
 export default Header

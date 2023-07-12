@@ -86,7 +86,8 @@ const Sidebar = (props) => {
                     <MenuWrapper>
                         <Box width='100%'>
                             {SidebarData.map((item, index) => {
-                                return <MenuItem item={item} key={index} selected={selected} setSelected={setSelected}/>
+                                return <MenuItem item={item} key={index} setHeaderTitle={props.setHeaderTitle} 
+								selected={selected} setSelected={setSelected}/>
                             })}
                         </Box>
 						<StyledEngineProvider>

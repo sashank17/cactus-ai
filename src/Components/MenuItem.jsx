@@ -36,18 +36,23 @@ const MenuItemLabel = styled.span`
 `
 
 const MenuItem = (props) => {
-  return (
-    <>
-        <MenuItemWrapper onClick={props.setSelected(props.item.title)}>
-            <MenuItemLink to={props.item.path}>
-                {props.item.icon}
-                <MenuItemLabel>
-                    {props.item.title}
-                </MenuItemLabel>
-            </MenuItemLink>
-        </MenuItemWrapper>
-    </>
-  )
+    const handleMenuItemClick = () => {
+        props.setSelected(props.item.title) 
+        props.setHeaderTitle(props.item.title)
+    }
+
+    return (
+        <>
+            <MenuItemWrapper onClick={handleMenuItemClick}>
+                <MenuItemLink to={props.item.path}>
+                    {props.item.icon}
+                    <MenuItemLabel>
+                        {props.item.title}
+                    </MenuItemLabel>
+                </MenuItemLink>
+            </MenuItemWrapper>
+        </>
+    )
 }
 
 export default MenuItem

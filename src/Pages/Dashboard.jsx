@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../Components/Header'
 import StatBox from '../Components/StatBox'
 import { StatBoxData } from '../utils/StatBoxData'
 import LineChart from '../Components/LineChart'
@@ -49,60 +48,57 @@ const BarChartGrid = styled(Box)`
 
 const Dashboard = (props) => {
   return (
-	<>
-		<Header title="Dashboard" user={props.user}/>
-		<DashboardGrid>
-			{StatBoxData.map((item, index) => {
-				return (
-					<StatBoxGrid>
-						<StatBox title={item.title} subtitle={item.subtitle} progress={item.progress} icon={item.icon} percentIncrease={item.percentIncrease} />
-					</StatBoxGrid>
-				)
-			})}
+	<DashboardGrid>
+		{StatBoxData.map((item, index) => {
+			return (
+				<StatBoxGrid>
+					<StatBox title={item.title} subtitle={item.subtitle} progress={item.progress} icon={item.icon} percentIncrease={item.percentIncrease} />
+				</StatBoxGrid>
+			)
+		})}
 
-			<LineChartGrid>
-				<ChartHeader>
-					<Box>
-						<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#ffffff'>
-							Revenue Generated
-						</Typography>
-						<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#9CFCD8'>
-							$ 59,340
-						</Typography>
-					</Box>
-					<Box>
-						<PaidRounded sx={{color: '#9CFCD8', fontSize: '36px'}}/>
-					</Box>
-				</ChartHeader>
-				<Box height="225px" ml="-20px" mt="-35px">
-					<LineChart />
+		<LineChartGrid>
+			<ChartHeader>
+				<Box>
+					<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#ffffff'>
+						Revenue Generated
+					</Typography>
+					<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#9CFCD8'>
+						$ 59,340
+					</Typography>
 				</Box>
-			</LineChartGrid>
-
-			<BarChartGrid>
-				<ChartHeader>
-					<Box>
-						<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#ffffff'>
-							Total Monthly Sales
-						</Typography>
-						<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#9CFCD8'>
-							456
-						</Typography>
-					</Box>
-					<Box>
-						<PointOfSaleRounded sx={{color: '#9CFCD8', fontSize: '36px'}} />
-					</Box>
-				</ChartHeader>
-				<Box height="225px" ml="-20px" mt="-35px">
-					<BarChart />
+				<Box>
+					<PaidRounded sx={{color: '#9CFCD8', fontSize: '36px'}}/>
 				</Box>
-			</BarChartGrid>
+			</ChartHeader>
+			<Box height="225px" ml="-20px" mt="-35px">
+				<LineChart />
+			</Box>
+		</LineChartGrid>
 
-			<ImageCarousel title='Top Brands this week' data={BrandsData}/>
-			<ImageCarousel title='Top Retailers this week' data={RetailersData}/>
+		<BarChartGrid>
+			<ChartHeader>
+				<Box>
+					<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#ffffff'>
+						Total Monthly Sales
+					</Typography>
+					<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#9CFCD8'>
+						456
+					</Typography>
+				</Box>
+				<Box>
+					<PointOfSaleRounded sx={{color: '#9CFCD8', fontSize: '36px'}} />
+				</Box>
+			</ChartHeader>
+			<Box height="225px" ml="-20px" mt="-35px">
+				<BarChart />
+			</Box>
+		</BarChartGrid>
 
-		</DashboardGrid>
-	</>
+		<ImageCarousel title='Top Brands this week' data={BrandsData}/>
+		<ImageCarousel title='Top Retailers this week' data={RetailersData}/>
+
+	</DashboardGrid>
   )
 }
 
