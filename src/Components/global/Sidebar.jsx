@@ -23,19 +23,23 @@ const LogoImage = styled.img`
     width: 50px;
     height: auto;
 `
-const SidebarWrapper = styled.nav`
+const LogoLabel = styled(Typography)`
+	padding-left: 10px;
+	font-family: inherit; 
+	font-size: 18px;
+	color: #9CFCD8;
+`
+const SidebarWrapper = styled.div`
     background: #121B28;
     width: 300px;
-    height: 100vh;
-`
-const SidebarNav = styled.div`
-    width: 100%;
+	height: 100%;
 `
 const MenuWrapper = styled(Box)`
-	height: 85vh;
+	width: 100%;
+	height: calc(100% - 93.7px);
 	display: flex; 
 	justify-content: space-between;
-	align-items: center; 
+	align-items: center;
 	flex-direction: column;
 `
 const LogoutButton = styled(Button)`
@@ -47,11 +51,9 @@ const LogoutButton = styled(Button)`
 		color: #e1e9fc;
 		font-family: inherit;
 		font-size: 18px;
+		margin-bottom: 10px;
+		padding: 10px 38px;
 		cursor: pointer;
-	}
-
-	&.MuiButton-text {
-		padding: 10px 35px;
 	}
 
 	&.MuiButton-root:hover {
@@ -73,46 +75,44 @@ const Sidebar = (props) => {
     return (
         <>
             <SidebarWrapper>
-                <SidebarNav>
-                    <NavIcon>
-                        <LogoWrapper>
-                            <LogoImage src={logo} alt='logo' />
-                            <Typography variant='body1' pl='10px' fontFamily='inherit' fontSize='18px' color='#9CFCD8'>
-                                cactus.ai
-                            </Typography>
-                        </LogoWrapper>
-                        {/* <MenuRounded /> */}
-                    </NavIcon>
-                    <MenuWrapper>
-                        <Box width='100%'>
-                            {SidebarData.map((item, index) => {
-                                return <MenuItem item={item} key={index} setHeaderTitle={props.setHeaderTitle} 
-								selected={selected} setSelected={setSelected}/>
-                            })}
-                        </Box>
-						<StyledEngineProvider>
-							<LogoutButton variant='text' onClick={() => setLogoutDialogOpen(true)}
-							disableElevation disableRipple disableFocusRipple 
-							startIcon={<LogoutRounded sx={{fontSize: '20px'}}/>}>
-								Logout
-							</LogoutButton>
-						</StyledEngineProvider>
-						<Dialog open={logoutDialogOpen} onClose={handleLogoutDialogClose}>
-							<DialogTitle fontFamily='inherit'>
-								Logout
-							</DialogTitle>
-							<DialogContent>
-								<DialogContentText fontFamily='inherit'>
-									Are you sure you want to logout?
-								</DialogContentText>
-							</DialogContent>
-							<DialogActions>
-								<Button sx={{fontFamily: 'inherit', color: '#121B28'}} onClick={handleLogoutDialogClose}> No </Button>
-								<Button sx={{fontFamily: 'inherit', color: '#121B28'}}  onClick={() => props.setIsLoggedIn(false)} autoFocus> Yes </Button>
-							</DialogActions>
-						</Dialog>
-                    </MenuWrapper>
-                </SidebarNav>
+				<NavIcon id='navIcon'>
+					<LogoWrapper>
+						<LogoImage src={logo} alt='logo' />
+						<LogoLabel variant='body1'>
+							cactus.ai
+						</LogoLabel>
+					</LogoWrapper>
+					{/* <MenuRounded /> */}
+				</NavIcon>
+				<MenuWrapper>
+					<Box width='100%'>
+						{SidebarData.map((item, index) => {
+							return <MenuItem item={item} key={index} setHeaderTitle={props.setHeaderTitle} 
+							selected={selected} setSelected={setSelected}/>
+						})}
+					</Box>
+					<StyledEngineProvider>
+						<LogoutButton variant='text' onClick={() => setLogoutDialogOpen(true)}
+						disableElevation disableRipple disableFocusRipple 
+						startIcon={<LogoutRounded sx={{fontSize: '20px', marginRight: '-3px'}}/>}>
+							Logout
+						</LogoutButton>
+					</StyledEngineProvider>
+					<Dialog open={logoutDialogOpen} onClose={handleLogoutDialogClose}>
+						<DialogTitle fontFamily='inherit'>
+							Logout
+						</DialogTitle>
+						<DialogContent>
+							<DialogContentText fontFamily='inherit'>
+								Are you sure you want to logout?
+							</DialogContentText>
+						</DialogContent>
+						<DialogActions>
+							<Button sx={{fontFamily: 'inherit', color: '#121B28'}} onClick={handleLogoutDialogClose}> No </Button>
+							<Button sx={{fontFamily: 'inherit', color: '#121B28'}}  onClick={() => props.setIsLoggedIn(false)} autoFocus> Yes </Button>
+						</DialogActions>
+					</Dialog>
+				</MenuWrapper>
             </SidebarWrapper>
         </>
     )

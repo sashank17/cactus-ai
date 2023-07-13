@@ -7,7 +7,7 @@ const MenuItemWrapper = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 10px 25px;
+    padding: 5px 25px;
     list-style: none;
     height: 50px;
     cursor: pointer;
