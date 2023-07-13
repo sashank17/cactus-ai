@@ -43,9 +43,10 @@ const ImageCarousel = (props) => {
 				{props.data.slice(i, i + sliderItems).map((item, index) => {
 					return (
 						<ImagePlaceholder>
-							<Typography variant='body1' fontFamily='inherit' >
-								{item.title}
-							</Typography>
+						 	{/* <Typography variant='body1' fontFamily='inherit' >
+						 		{item.title}
+						 	</Typography> */}
+							<img src={item.image} alt={item.title} styles={{width: '100%'}} />
 						</ImagePlaceholder>
 					)
 				})}
@@ -62,7 +63,7 @@ const ImageCarousel = (props) => {
                 </Typography>
 
             </CarouselHeader>
-				<CarouselWrapper animation='slide' duration='800'>
+				<CarouselWrapper duration='800'>
 					{items}
 				</CarouselWrapper>
         </CarouselGrid>
