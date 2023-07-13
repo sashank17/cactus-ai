@@ -1,271 +1,430 @@
 export const BarChartData = [
     {
-      "country": "AD",
-      "hot dog": 92,
-      "hot dogColor": "hsl(79, 70%, 50%)",
-      "burger": 149,
-      "burgerColor": "hsl(179, 70%, 50%)",
-      "sandwich": 176,
-      "sandwichColor": "hsl(204, 70%, 50%)",
-      "kebab": 123,
-      "kebabColor": "hsl(100, 70%, 50%)",
-      "fries": 46,
-      "friesColor": "hsl(172, 70%, 50%)",
-      "donut": 2,
-      "donutColor": "hsl(254, 70%, 50%)"
+      "month": "Jan",
+      "Apple": 92,
+      "AppleColor": "hsl(79, 70%, 50%)",
+      "Nestle": 149,
+      "NestleColor": "hsl(179, 70%, 50%)",
+      "Merck and Co": 176,
+      "Merck and CoColor": "hsl(204, 70%, 50%)",
+      "Sony": 46,
+      "SonyColor": "hsl(172, 70%, 50%)",
+      "Tyson Foods": 2,
+      "Tyson FoodsColor": "hsl(254, 70%, 50%)"
     },
     {
-      "country": "AE",
-      "hot dog": 111,
-      "hot dogColor": "hsl(6, 70%, 50%)",
-      "burger": 178,
-      "burgerColor": "hsl(126, 70%, 50%)",
-      "sandwich": 99,
-      "sandwichColor": "hsl(253, 70%, 50%)",
-      "kebab": 192,
-      "kebabColor": "hsl(18, 70%, 50%)",
-      "fries": 90,
-      "friesColor": "hsl(313, 70%, 50%)",
-      "donut": 31,
-      "donutColor": "hsl(135, 70%, 50%)"
+      "month": "Feb",
+      "Apple": 111,
+      "AppleColor": "hsl(6, 70%, 50%)",
+      "Nestle": 178,
+      "NestleColor": "hsl(126, 70%, 50%)",
+      "Merck and Co": 99,
+      "Merck and CoColor": "hsl(253, 70%, 50%)",
+      "Sony": 90,
+      "SonyColor": "hsl(313, 70%, 50%)",
+      "Tyson Foods": 31,
+      "Tyson FoodsColor": "hsl(135, 70%, 50%)"
     },
     {
-      "country": "AF",
-      "hot dog": 53,
-      "hot dogColor": "hsl(58, 70%, 50%)",
-      "burger": 149,
-      "burgerColor": "hsl(329, 70%, 50%)",
-      "sandwich": 50,
-      "sandwichColor": "hsl(90, 70%, 50%)",
-      "kebab": 115,
-      "kebabColor": "hsl(14, 70%, 50%)",
-      "fries": 102,
-      "friesColor": "hsl(126, 70%, 50%)",
-      "donut": 103,
-      "donutColor": "hsl(189, 70%, 50%)"
+      "month": "Mar",
+      "Apple": 53,
+      "AppleColor": "hsl(58, 70%, 50%)",
+      "Nestle": 149,
+      "NestleColor": "hsl(329, 70%, 50%)",
+      "Merck and Co": 50,
+      "Merck and CoColor": "hsl(90, 70%, 50%)",
+      "Sony": 102,
+      "SonyColor": "hsl(126, 70%, 50%)",
+      "Tyson Foods": 103,
+      "Tyson FoodsColor": "hsl(189, 70%, 50%)"
     },
     {
-      "country": "AG",
-      "hot dog": 15,
-      "hot dogColor": "hsl(51, 70%, 50%)",
-      "burger": 54,
-      "burgerColor": "hsl(84, 70%, 50%)",
-      "sandwich": 161,
-      "sandwichColor": "hsl(98, 70%, 50%)",
-      "kebab": 95,
-      "kebabColor": "hsl(62, 70%, 50%)",
-      "fries": 81,
-      "friesColor": "hsl(31, 70%, 50%)",
-      "donut": 43,
-      "donutColor": "hsl(107, 70%, 50%)"
+      "month": "Apr",
+      "Apple": 15,
+      "AppleColor": "hsl(51, 70%, 50%)",
+      "Nestle": 54,
+      "NestleColor": "hsl(84, 70%, 50%)",
+      "Merck and Co": 161,
+      "Merck and CoColor": "hsl(98, 70%, 50%)",
+      "Sony": 81,
+      "SonyColor": "hsl(31, 70%, 50%)",
+      "Tyson Foods": 43,
+      "Tyson FoodsColor": "hsl(107, 70%, 50%)"
     },
     {
-      "country": "AI",
-      "hot dog": 147,
-      "hot dogColor": "hsl(0, 70%, 50%)",
-      "burger": 50,
-      "burgerColor": "hsl(47, 70%, 50%)",
-      "sandwich": 143,
-      "sandwichColor": "hsl(91, 70%, 50%)",
-      "kebab": 195,
-      "kebabColor": "hsl(96, 70%, 50%)",
-      "fries": 7,
-      "friesColor": "hsl(246, 70%, 50%)",
-      "donut": 12,
-      "donutColor": "hsl(322, 70%, 50%)"
+      "month": "May",
+      "Apple": 147,
+      "AppleColor": "hsl(0, 70%, 50%)",
+      "Nestle": 50,
+      "NestleColor": "hsl(47, 70%, 50%)",
+      "Merck and Co": 143,
+      "Merck and CoColor": "hsl(91, 70%, 50%)",
+      "Sony": 7,
+      "SonyColor": "hsl(246, 70%, 50%)",
+      "Tyson Foods": 12,
+      "Tyson FoodsColor": "hsl(322, 70%, 50%)"
     },
     {
-      "country": "AL",
-      "hot dog": 130,
-      "hot dogColor": "hsl(164, 70%, 50%)",
-      "burger": 62,
-      "burgerColor": "hsl(318, 70%, 50%)",
-      "sandwich": 82,
-      "sandwichColor": "hsl(12, 70%, 50%)",
-      "kebab": 92,
-      "kebabColor": "hsl(65, 70%, 50%)",
-      "fries": 151,
-      "friesColor": "hsl(203, 70%, 50%)",
-      "donut": 125,
-      "donutColor": "hsl(331, 70%, 50%)"
+      "month": "Jun",
+      "Apple": 130,
+      "AppleColor": "hsl(164, 70%, 50%)",
+      "Nestle": 62,
+      "NestleColor": "hsl(318, 70%, 50%)",
+      "Merck and Co": 82,
+      "Merck and CoColor": "hsl(12, 70%, 50%)",
+      "Sony": 151,
+      "SonyColor": "hsl(203, 70%, 50%)",
+      "Tyson Foods": 125,
+      "Tyson FoodsColor": "hsl(331, 70%, 50%)"
     },
     {
-      "country": "AM",
-      "hot dog": 83,
-      "hot dogColor": "hsl(263, 70%, 50%)",
-      "burger": 105,
-      "burgerColor": "hsl(142, 70%, 50%)",
-      "sandwich": 17,
-      "sandwichColor": "hsl(211, 70%, 50%)",
-      "kebab": 21,
-      "kebabColor": "hsl(205, 70%, 50%)",
-      "fries": 85,
-      "friesColor": "hsl(169, 70%, 50%)",
-      "donut": 120,
-      "donutColor": "hsl(254, 70%, 50%)"
+      "month": "Jul",
+      "Apple": 83,
+      "AppleColor": "hsl(263, 70%, 50%)",
+      "Nestle": 105,
+      "NestleColor": "hsl(142, 70%, 50%)",
+      "Merck and Co": 17,
+      "Merck and CoColor": "hsl(211, 70%, 50%)",
+      "Sony": 85,
+      "SonyColor": "hsl(169, 70%, 50%)",
+      "Tyson Foods": 120,
+      "Tyson FoodsColor": "hsl(254, 70%, 50%)"
+    },
+    {
+      "month": "Aug",
+      "Apple": 53,
+      "AppleColor": "hsl(58, 70%, 50%)",
+      "Nestle": 149,
+      "NestleColor": "hsl(329, 70%, 50%)",
+      "Merck and Co": 50,
+      "Merck and CoColor": "hsl(90, 70%, 50%)",
+      "Sony": 102,
+      "SonyColor": "hsl(126, 70%, 50%)",
+      "Tyson Foods": 103,
+      "Tyson FoodsColor": "hsl(189, 70%, 50%)"
+    },
+    {
+      "month": "Sep",
+      "Apple": 15,
+      "AppleColor": "hsl(51, 70%, 50%)",
+      "Nestle": 54,
+      "NestleColor": "hsl(84, 70%, 50%)",
+      "Merck and Co": 161,
+      "Merck and CoColor": "hsl(98, 70%, 50%)",
+      "Sony": 81,
+      "SonyColor": "hsl(31, 70%, 50%)",
+      "Tyson Foods": 43,
+      "Tyson FoodsColor": "hsl(107, 70%, 50%)"
+    },
+    {
+      "month": "Oct",
+      "Apple": 147,
+      "AppleColor": "hsl(0, 70%, 50%)",
+      "Nestle": 50,
+      "NestleColor": "hsl(47, 70%, 50%)",
+      "Merck and Co": 143,
+      "Merck and CoColor": "hsl(91, 70%, 50%)",
+      "Sony": 7,
+      "SonyColor": "hsl(246, 70%, 50%)",
+      "Tyson Foods": 12,
+      "Tyson FoodsColor": "hsl(322, 70%, 50%)"
+    },
+    {
+      "month": "Nov",
+      "Apple": 130,
+      "AppleColor": "hsl(164, 70%, 50%)",
+      "Nestle": 62,
+      "NestleColor": "hsl(318, 70%, 50%)",
+      "Merck and Co": 82,
+      "Merck and CoColor": "hsl(12, 70%, 50%)",
+      "Sony": 151,
+      "SonyColor": "hsl(203, 70%, 50%)",
+      "Tyson Foods": 125,
+      "Tyson FoodsColor": "hsl(331, 70%, 50%)"
+    },
+    {
+      "month": "Dec",
+      "Apple": 83,
+      "AppleColor": "hsl(263, 70%, 50%)",
+      "Nestle": 105,
+      "NestleColor": "hsl(142, 70%, 50%)",
+      "Merck and Co": 17,
+      "Merck and CoColor": "hsl(211, 70%, 50%)",
+      "Sony": 85,
+      "SonyColor": "hsl(169, 70%, 50%)",
+      "Tyson Foods": 120,
+      "Tyson FoodsColor": "hsl(254, 70%, 50%)"
     }
 ]
 
 export const LineChartData = [
   {
-    "id": "Japan",
+    "id": "Target",
     "color": "hsl(84, 70%, 50%)",
     "data": [
       {
-        "x": "plane",
+        "x": "January",
         "y": 238
       },
       {
-        "x": "helicopter",
+        "x": "February",
         "y": 57
       },
       {
-        "x": "boat",
+        "x": "March",
         "y": 271
       },
       {
-        "x": "train",
+        "x": "April",
         "y": 256
       },
       {
-        "x": "subway",
+        "x": "May",
         "y": 209
       },
       {
-        "x": "bus",
+        "x": "June",
         "y": 264
       },
       {
-        "x": "car",
+        "x": "July",
         "y": 149
       },
       {
-        "x": "moto",
+        "x": "August",
         "y": 12
       },
       {
-        "x": "bicycle",
+        "x": "September",
         "y": 213
       },
       {
-        "x": "horse",
+        "x": "October",
         "y": 240
       },
       {
-        "x": "skateboard",
+        "x": "November",
         "y": 272
       },
       {
-        "x": "others",
+        "x": "December",
         "y": 258
       }
     ]
   },
   {
-    "id": "France",
+    "id": "Winco Food",
     "color": "hsl(142, 70%, 50%)",
     "data": [
       {
-        "x": "plane",
+        "x": "January",
         "y": 89
       },
       {
-        "x": "helicopter",
+        "x": "February",
         "y": 114
       },
       {
-        "x": "boat",
+        "x": "March",
         "y": 152
       },
       {
-        "x": "train",
+        "x": "April",
         "y": 256
       },
       {
-        "x": "subway",
+        "x": "May",
         "y": 175
       },
       {
-        "x": "bus",
+        "x": "June",
         "y": 42
       },
       {
-        "x": "car",
+        "x": "July",
         "y": 272
       },
       {
-        "x": "moto",
+        "x": "August",
         "y": 109
       },
       {
-        "x": "bicycle",
+        "x": "September",
         "y": 21
       },
       {
-        "x": "horse",
+        "x": "October",
         "y": 93
       },
       {
-        "x": "skateboard",
+        "x": "November",
         "y": 270
       },
       {
-        "x": "others",
+        "x": "December",
         "y": 16
       }
     ]
   },
   {
-    "id": "US",
+    "id": "CVSHealth",
     "color": "hsl(193, 70%, 50%)",
     "data": [
       {
-        "x": "plane",
+        "x": "January",
         "y": 265
       },
       {
-        "x": "helicopter",
+        "x": "February",
         "y": 49
       },
       {
-        "x": "boat",
+        "x": "March",
         "y": 238
       },
       {
-        "x": "train",
+        "x": "April",
         "y": 162
       },
       {
-        "x": "subway",
+        "x": "May",
         "y": 15
       },
       {
-        "x": "bus",
+        "x": "June",
         "y": 69
       },
       {
-        "x": "car",
+        "x": "July",
         "y": 291
       },
       {
-        "x": "moto",
+        "x": "August",
         "y": 191
       },
       {
-        "x": "bicycle",
+        "x": "September",
         "y": 108
       },
       {
-        "x": "horse",
+        "x": "October",
         "y": 196
       },
       {
-        "x": "skateboard",
+        "x": "November",
         "y": 30
       },
       {
-        "x": "others",
+        "x": "December",
         "y": 174
+      }
+    ]
+  },
+  {
+    "id": "Costco",
+    "color": "hsl(117, 70%, 50%)",
+    "data": [
+      {
+        "x": "January",
+        "y": 148
+      },
+      {
+        "x": "February",
+        "y": 164
+      },
+      {
+        "x": "March",
+        "y": 75
+      },
+      {
+        "x": "April",
+        "y": 188
+      },
+      {
+        "x": "May",
+        "y": 213
+      },
+      {
+        "x": "June",
+        "y": 100
+      },
+      {
+        "x": "July",
+        "y": 70
+      },
+      {
+        "x": "August",
+        "y": 136
+      },
+      {
+        "x": "September",
+        "y": 273
+      },
+      {
+        "x": "October",
+        "y": 105
+      },
+      {
+        "x": "November",
+        "y": 73
+      },
+      {
+        "x": "December",
+        "y": 249
+      }
+    ]
+  },
+  {
+    "id": "Walmart",
+    "color": "hsl(19, 70%, 50%)",
+    "data": [
+      {
+        "x": "January",
+        "y": 204
+      },
+      {
+        "x": "February",
+        "y": 247
+      },
+      {
+        "x": "March",
+        "y": 247
+      },
+      {
+        "x": "April",
+        "y": 8
+      },
+      {
+        "x": "May",
+        "y": 149
+      },
+      {
+        "x": "June",
+        "y": 183
+      },
+      {
+        "x": "July",
+        "y": 75
+      },
+      {
+        "x": "August",
+        "y": 291
+      },
+      {
+        "x": "September",
+        "y": 184
+      },
+      {
+        "x": "October",
+        "y": 69
+      },
+      {
+        "x": "November",
+        "y": 147
+      },
+      {
+        "x": "December",
+        "y": 296
       }
     ]
   }
