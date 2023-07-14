@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography, Card, Grid } from '@mui/material'
+import { Box, Typography, Grid } from '@mui/material'
 import styled from 'styled-components'
 import Carousel from 'react-material-ui-carousel'
 
@@ -7,7 +7,7 @@ import Carousel from 'react-material-ui-carousel'
 const CarouselGrid = styled(Box)`
 	grid-column: span 6;
 	grid-row: span 2;
-	background-color: #121B28;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 20px;
 `
 const CarouselHeader = styled(Box)`
@@ -18,18 +18,14 @@ const CarouselHeader = styled(Box)`
 	align-items: center;
 `
 const CarouselWrapper = styled(Carousel)`
-	margin: 30px 25px;
+	margin: 15px 5px;
 `
-const ImagePlaceholder = styled(Box)`
-	margin: 15px;
-	width: 125px;
-	height: 125px;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	background-color: #ffffff;
-	border-radius: 25px;
+const CarouselImage = styled.img`
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border-radius: 5px;
+	margin: 5px 5px 0px;
+	height: 125px !important;
+	width: auto   !important;	
 `
 
 const ImageCarousel = (props) => {
@@ -42,12 +38,7 @@ const ImageCarousel = (props) => {
 			<Grid container spacing={0} display='flex' flexDirection='row' justifyContent='center' alignItems='center'>
 				{props.data.slice(i, i + sliderItems).map((item, index) => {
 					return (
-						<ImagePlaceholder>
-						 	{/* <Typography variant='body1' fontFamily='inherit' >
-						 		{item.title}
-						 	</Typography> */}
-							<img src={item.image} alt={item.title} styles={{width: '100%'}} />
-						</ImagePlaceholder>
+						<CarouselImage src={item.image} alt={item.title} styles={{width: '100%'}} />
 					)
 				})}
 			</Grid>
@@ -58,14 +49,13 @@ const ImageCarousel = (props) => {
     return (
         <CarouselGrid>
             <CarouselHeader>
-                <Typography variant='h6' fontFamily='inherit' fontWeight='600' color='#ffffff'>
+                <Typography variant='h6' fontFamily='inherit' fontWeight='600' color='#121B28'>
                     {props.title}
                 </Typography>
-
             </CarouselHeader>
-				<CarouselWrapper duration='800'>
-					{items}
-				</CarouselWrapper>
+			<CarouselWrapper duration='800'>
+				{items}
+			</CarouselWrapper>
         </CarouselGrid>
     )
 }

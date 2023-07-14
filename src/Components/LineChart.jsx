@@ -10,29 +10,29 @@ const LineChart = () => {
             axis: {
                 domain: {
                     line: {
-                        stroke: '#D3CCCC'
+                        stroke: '#121B28'
                     }
                 },
                 legend: {
                     text: {
-                        fill: '#D3CCCC',
+                        fill: '#121B28',
                         fontFamily: 'inherit'
                     }
                 },
                 ticks: {
                     line: {
-                        stroke: '#D3CCCC',
+                        stroke: '#121B28',
                         strokeWidth: 1
                     },
                     text: {
-                        fill: '#D3CCCC',
+                        fill: '#121B28',
                         fontFamily: 'inherit'
                     }
                 }
             },
             legends: {
                 text: {
-                    fill: '#D3CCCC',
+                    fill: '#121B28',
                     fontFamily: 'inherit'
                 }
             },
@@ -42,7 +42,7 @@ const LineChart = () => {
                 }
             }
         }}
-        // colors={{datum: "color"}}
+        colors={{ scheme: "category10"}}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{

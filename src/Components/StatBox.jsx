@@ -15,7 +15,7 @@ const StatBox = (props) => {
             <Box display='flex' justifyContent='space-between'>
                 <Box>
                     {props.icon}
-                    <Typography variant='h6' fontWeight='bold' color='#ffffff' fontFamily='inherit'>
+                    <Typography variant='h6' fontWeight='bold' color='#121B28' fontFamily='inherit'>
                         {props.title}
                     </Typography>
                 </Box>
@@ -25,10 +25,10 @@ const StatBox = (props) => {
             </Box>
 
             <Box display='flex' justifyContent='space-between'>  
-                <Typography variant="body2" color='#9CFCD8' fontFamily='inherit'>
+                <Typography variant="body2" color='#047c44' fontFamily='inherit'>
                     {props.subtitle}
                 </Typography>
-                <Typography variant='body2' fontStyle='italic' color='#9CFCD8' fontFamily='inherit'>
+                <Typography variant='body2' fontStyle='italic' color='#047c44' fontFamily='inherit'>
                     {props.percentIncrease}
                 </Typography>
             </Box>

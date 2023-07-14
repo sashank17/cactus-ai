@@ -1,5 +1,7 @@
 import { React, useState} from 'react'
-import logo from '../../assets/Cactus-ai icon.png'
+import logo1 from '../../assets/cactusicon_green.png'
+import logo2 from '../../assets/cactusicon_black.png'
+import logo3 from '../../assets/cactusicon_white.png'
 import { SidebarData } from '../../utils/SidebarData'
 import MenuItem from '../MenuItem'
 import { Box, Button, Typography, StyledEngineProvider, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
@@ -8,11 +10,10 @@ import styled from 'styled-components'
 
 
 const NavIcon = styled.div`
-    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 15px 30px;
+    padding: 20px 15px;
 `
 const LogoWrapper = styled.div`
     display: flex;
@@ -24,7 +25,6 @@ const LogoImage = styled.img`
     height: auto;
 `
 const LogoLabel = styled(Typography)`
-	padding-left: 10px;
 	font-family: inherit; 
 	font-size: 18px;
 	color: #9CFCD8;
@@ -77,7 +77,7 @@ const Sidebar = (props) => {
             <SidebarWrapper>
 				<NavIcon id='navIcon'>
 					<LogoWrapper>
-						<LogoImage src={logo} alt='logo' />
+						<LogoImage src={logo1} alt='logo' />
 						<LogoLabel variant='body1'>
 							cactus.ai
 						</LogoLabel>

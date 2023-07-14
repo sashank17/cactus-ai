@@ -5,11 +5,13 @@ import styled from 'styled-components'
 
 
 const HeaderWrapper = styled(Box)`
-	margin: 20px 15px 12px;
+	padding: 15px 15px;
+	margin-bottom: 12px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+	background-color: #121B28;
 `
 
 const AccountWrapper = styled(Box)`

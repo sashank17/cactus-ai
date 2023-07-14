@@ -20,7 +20,7 @@ const DashboardGrid = styled(Box)`
 `
 const StatBoxGrid = styled(Box)`
 	grid-column: span 3;
-	background-color: #121B28;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -29,7 +29,7 @@ const StatBoxGrid = styled(Box)`
 const LineChartGrid = styled(Box)`
 	grid-column: span 8;
 	grid-row: span 2;
-	background-color: #121B28;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 20px;
 `
 const ChartHeader = styled(Box)`
@@ -42,7 +42,7 @@ const ChartHeader = styled(Box)`
 const BarChartGrid = styled(Box)`
 	grid-column: span 4;
 	grid-row: span 2;
-	background-color: #121B28;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 20px;
 `
 
@@ -60,15 +60,15 @@ const Dashboard = (props) => {
 		<LineChartGrid>
 			<ChartHeader>
 				<Box>
-					<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#ffffff'>
+					<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#121B28'>
 						Revenue Generated
 					</Typography>
-					<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#9CFCD8'>
+					<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#047c44'>
 						$ 59,340
 					</Typography>
 				</Box>
 				<Box>
-					<PaidRounded sx={{color: '#9CFCD8', fontSize: '36px'}}/>
+					<PaidRounded sx={{color: '#047c44', fontSize: '36px'}}/>
 				</Box>
 			</ChartHeader>
 			<Box height="225px" ml="-20px" mt="-35px">
@@ -79,15 +79,15 @@ const Dashboard = (props) => {
 		<BarChartGrid>
 			<ChartHeader>
 				<Box>
-					<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#ffffff'>
+					<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#121B28'>
 						Total Monthly Sales
 					</Typography>
-					<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#9CFCD8'>
-						456
+					<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#047c44'>
+						$ 456
 					</Typography>
 				</Box>
 				<Box>
-					<PointOfSaleRounded sx={{color: '#9CFCD8', fontSize: '36px'}} />
+					<PointOfSaleRounded sx={{color: '#047c44', fontSize: '36px'}} />
 				</Box>
 			</ChartHeader>
 			<Box height="225px" ml="-20px" mt="-35px">

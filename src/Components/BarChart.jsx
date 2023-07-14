@@ -10,29 +10,29 @@ const BarChart = () => {
             axis: {
                 domain: {
                     line: {
-                        stroke: '#D3CCCC'
+                        stroke: '#121B28'
                     }
                 },
                 legend: {
                     text: {
-                        fill: '#D3CCCC',
+                        fill: '#121B28',
                         fontFamily: 'inherit'
                     }
                 },
                 ticks: {
                     line: { 
-                        stroke: '#D3CCCC',
+                        stroke: '#121B28',
                         strokeWidth: 1,
                     },
                     text: {
-                        fill: '#D3CCCC',
+                        fill: '#121B28',
                         fontFamily: 'inherit'
                     }
                 }
             },
             legends: {
                 text: {
-                    fill: '#D3CCCC',
+                    fill: '#121B28',
                     fontFamily: 'inherit'
                 },
             }
@@ -49,7 +49,7 @@ const BarChart = () => {
         padding={0.3}
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band', round: true }}
-        colors={{ scheme: 'nivo' }}
+        colors={{ scheme: 'category10' }}
         borderColor={{
             from: 'color',
             modifiers: [
