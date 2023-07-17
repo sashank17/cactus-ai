@@ -5,8 +5,8 @@ import styled from 'styled-components'
 
 
 const HeaderWrapper = styled(Box)`
-	padding: 15px 15px;
-	margin-bottom: 12px;
+	padding: 15px;
+	margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

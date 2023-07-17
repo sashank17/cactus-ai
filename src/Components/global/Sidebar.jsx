@@ -4,16 +4,17 @@ import logo2 from '../../assets/cactusicon_black.png'
 import logo3 from '../../assets/cactusicon_white.png'
 import { SidebarData } from '../../utils/SidebarData'
 import MenuItem from '../MenuItem'
-import { Box, Button, Typography, StyledEngineProvider, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
+import { Box, Button, Typography, StyledEngineProvider, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton } from '@mui/material'
 import { MenuRounded, LogoutRounded } from '@mui/icons-material'
 import styled from 'styled-components'
 
 
 const NavIcon = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: ${(props) => props.isCollapsed ? 'center' : 'space-between'};
     align-items: center;
-    padding: 20px 15px;
+    padding: 15px;
+	margin-bottom: 10px;
 `
 const LogoWrapper = styled.div`
     display: flex;
@@ -31,8 +32,9 @@ const LogoLabel = styled(Typography)`
 `
 const SidebarWrapper = styled.div`
     background: #121B28;
-    width: 300px;
+    width: ${(props) => props.isCollapsed ? '50px' : '300px'};
 	height: 100%;
+	transition: all 0.3s;
 `
 const MenuWrapper = styled(Box)`
 	width: 100%;
@@ -51,7 +53,6 @@ const LogoutButton = styled(Button)`
 		color: #e1e9fc;
 		font-family: inherit;
 		font-size: 18px;
-		margin-bottom: 10px;
 		padding: 10px 38px;
 		cursor: pointer;
 	}
@@ -61,42 +62,78 @@ const LogoutButton = styled(Button)`
 		background: none;
 	}
 `
+const LogoutIconButton = styled(IconButton)`
+	&.MuiIconButton-root {
+		justify-content: center;
+		color: #e1e9fc;
+	}
+
+	&.MuiIconButton-root:hover {
+		color: #9CFCD8;
+		background: none;
+	}
+`
 	
 const Sidebar = (props) => {
 
-    // const [isCollapsed, setIsCollapsed] = useState(false)
-    const [selected, setSelected] = useState('Dashboard')
+	const [selected, setSelected] = useState('Dashboard')
+
+    const [isCollapsed, setIsCollapsed] = useState(false)
+	const toggleSidebar = () => {
+		setIsCollapsed(!isCollapsed)
+	} 
 
 	const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
 	const handleLogoutDialogClose = () => {
-		setLogoutDialogOpen(false);
+		setLogoutDialogOpen(false)
 	};
 
     return (
         <>
-            <SidebarWrapper>
-				<NavIcon id='navIcon'>
-					<LogoWrapper>
-						<LogoImage src={logo1} alt='logo' />
-						<LogoLabel variant='body1'>
-							cactus.ai
-						</LogoLabel>
-					</LogoWrapper>
-					{/* <MenuRounded /> */}
+            <SidebarWrapper isCollapsed={isCollapsed}>
+				<NavIcon isCollapsed={isCollapsed}>
+					{ isCollapsed ? (		
+							<IconButton onClick={toggleSidebar}>
+								<MenuRounded sx={{color: '#9CFCD8'}}/>
+							</IconButton>
+						) 
+						: (
+							<>
+								<LogoWrapper>
+									<LogoImage src={logo1} alt='logo' />
+									<LogoLabel variant='body1'>
+										cactus.ai
+									</LogoLabel>
+								</LogoWrapper>
+								<IconButton onClick={toggleSidebar}>
+									<MenuRounded sx={{color: '#9CFCD8'}}/>
+								</IconButton>
+							</>
+						)
+					}
 				</NavIcon>
 				<MenuWrapper>
 					<Box width='100%'>
 						{SidebarData.map((item, index) => {
 							return <MenuItem item={item} key={index} setHeaderTitle={props.setHeaderTitle} 
-							selected={selected} setSelected={setSelected}/>
+							selected={selected} setSelected={setSelected} isCollapsed={isCollapsed}/>
 						})}
 					</Box>
 					<StyledEngineProvider>
-						<LogoutButton variant='text' onClick={() => setLogoutDialogOpen(true)}
-						disableElevation disableRipple disableFocusRipple 
-						startIcon={<LogoutRounded sx={{fontSize: '20px', marginRight: '-3px'}}/>}>
-							Logout
-						</LogoutButton>
+						{ isCollapsed ? (
+								<LogoutIconButton onClick={() => setLogoutDialogOpen(true)}
+								disableElevation disableRipple disableFocusRipple>
+									<LogoutRounded sx={{fontSize: '20px', marginRight: '-3px'}}/>
+								</LogoutIconButton>
+							)
+							: (
+								<LogoutButton variant='text' onClick={() => setLogoutDialogOpen(true)}
+								disableElevation disableRipple disableFocusRipple 
+								startIcon={<LogoutRounded sx={{fontSize: '20px', marginRight: '-3px'}}/>}>
+									Logout
+								</LogoutButton>
+							)
+						}
 					</StyledEngineProvider>
 					<Dialog open={logoutDialogOpen} onClose={handleLogoutDialogClose}>
 						<DialogTitle fontFamily='inherit'>

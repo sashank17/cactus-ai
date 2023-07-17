@@ -7,15 +7,14 @@ const MenuItemWrapper = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 5px 25px;
+    padding: ${(props) => props.isCollapsed ? '5px' : '0px 25px'};
     list-style: none;
-    height: 50px;
     cursor: pointer;
 `
 const MenuItemLink= styled(NavLink)`
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: ${(props) => props.isCollapsed ? 'center' : 'flex-start'};
     padding: 10px;
     width: 100%;
     color: #e1e9fc;
@@ -27,7 +26,7 @@ const MenuItemLink= styled(NavLink)`
     &.active {
         background: #ffffff;
         color: #121B28;
-        border-radius: 12px;
+        border-radius: ${(props) => props.isCollapsed ? '5px' : '12px'};
     }
 `
 const MenuItemLabel = styled.span`
@@ -43,12 +42,16 @@ const MenuItem = (props) => {
 
     return (
         <>
-            <MenuItemWrapper onClick={handleMenuItemClick}>
-                <MenuItemLink to={props.item.path}>
+            <MenuItemWrapper isCollapsed={props.isCollapsed} onClick={handleMenuItemClick}>
+                <MenuItemLink isCollapsed={props.isCollapsed} to={props.item.path}>
                     {props.item.icon}
-                    <MenuItemLabel>
-                        {props.item.title}
-                    </MenuItemLabel>
+                    {!props.isCollapsed ? (
+                            <MenuItemLabel>
+                                {props.item.title}
+                            </MenuItemLabel>
+                        )
+                        : null
+                    }
                 </MenuItemLink>
             </MenuItemWrapper>
         </>
