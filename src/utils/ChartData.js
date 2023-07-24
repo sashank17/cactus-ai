@@ -163,19 +163,19 @@ export const LineChartData = [
     "color": "hsl(84, 70%, 50%)",
     "data": [
       {
-        "x": "January",
+        "x": "Jan",
         "y": 238
       },
       {
-        "x": "February",
+        "x": "Feb",
         "y": 57
       },
       {
-        "x": "March",
+        "x": "Mar",
         "y": 271
       },
       {
-        "x": "April",
+        "x": "Apr",
         "y": 256
       },
       {
@@ -183,31 +183,31 @@ export const LineChartData = [
         "y": 209
       },
       {
-        "x": "June",
+        "x": "Jun",
         "y": 264
       },
       {
-        "x": "July",
+        "x": "Jul",
         "y": 149
       },
       {
-        "x": "August",
+        "x": "Aug",
         "y": 12
       },
       {
-        "x": "September",
+        "x": "Sep",
         "y": 213
       },
       {
-        "x": "October",
+        "x": "Oct",
         "y": 240
       },
       {
-        "x": "November",
+        "x": "Nov",
         "y": 272
       },
       {
-        "x": "December",
+        "x": "Dec",
         "y": 258
       }
     ]
@@ -217,19 +217,19 @@ export const LineChartData = [
     "color": "hsl(142, 70%, 50%)",
     "data": [
       {
-        "x": "January",
+        "x": "Jan",
         "y": 89
       },
       {
-        "x": "February",
+        "x": "Feb",
         "y": 114
       },
       {
-        "x": "March",
+        "x": "Mar",
         "y": 152
       },
       {
-        "x": "April",
+        "x": "Apr",
         "y": 256
       },
       {
@@ -237,31 +237,31 @@ export const LineChartData = [
         "y": 175
       },
       {
-        "x": "June",
+        "x": "Jun",
         "y": 42
       },
       {
-        "x": "July",
+        "x": "Jul",
         "y": 272
       },
       {
-        "x": "August",
+        "x": "Aug",
         "y": 109
       },
       {
-        "x": "September",
+        "x": "Sep",
         "y": 21
       },
       {
-        "x": "October",
+        "x": "Oct",
         "y": 93
       },
       {
-        "x": "November",
+        "x": "Nov",
         "y": 270
       },
       {
-        "x": "December",
+        "x": "Dec",
         "y": 16
       }
     ]
@@ -271,19 +271,19 @@ export const LineChartData = [
     "color": "hsl(193, 70%, 50%)",
     "data": [
       {
-        "x": "January",
+        "x": "Jan",
         "y": 265
       },
       {
-        "x": "February",
+        "x": "Feb",
         "y": 49
       },
       {
-        "x": "March",
+        "x": "Mar",
         "y": 238
       },
       {
-        "x": "April",
+        "x": "Apr",
         "y": 162
       },
       {
@@ -291,31 +291,31 @@ export const LineChartData = [
         "y": 15
       },
       {
-        "x": "June",
+        "x": "Jun",
         "y": 69
       },
       {
-        "x": "July",
+        "x": "Jul",
         "y": 291
       },
       {
-        "x": "August",
+        "x": "Aug",
         "y": 191
       },
       {
-        "x": "September",
+        "x": "Sep",
         "y": 108
       },
       {
-        "x": "October",
+        "x": "Oct",
         "y": 196
       },
       {
-        "x": "November",
+        "x": "Nov",
         "y": 30
       },
       {
-        "x": "December",
+        "x": "Dec",
         "y": 174
       }
     ]
@@ -325,19 +325,19 @@ export const LineChartData = [
     "color": "hsl(117, 70%, 50%)",
     "data": [
       {
-        "x": "January",
+        "x": "Jan",
         "y": 148
       },
       {
-        "x": "February",
+        "x": "Feb",
         "y": 164
       },
       {
-        "x": "March",
+        "x": "Mar",
         "y": 75
       },
       {
-        "x": "April",
+        "x": "Apr",
         "y": 188
       },
       {
@@ -345,31 +345,31 @@ export const LineChartData = [
         "y": 213
       },
       {
-        "x": "June",
+        "x": "Jun",
         "y": 100
       },
       {
-        "x": "July",
+        "x": "Jul",
         "y": 70
       },
       {
-        "x": "August",
+        "x": "Aug",
         "y": 136
       },
       {
-        "x": "September",
+        "x": "Sep",
         "y": 273
       },
       {
-        "x": "October",
+        "x": "Oct",
         "y": 105
       },
       {
-        "x": "November",
+        "x": "Nov",
         "y": 73
       },
       {
-        "x": "December",
+        "x": "Dec",
         "y": 249
       }
     ]
@@ -379,19 +379,19 @@ export const LineChartData = [
     "color": "hsl(19, 70%, 50%)",
     "data": [
       {
-        "x": "January",
+        "x": "Jan",
         "y": 204
       },
       {
-        "x": "February",
+        "x": "Feb",
         "y": 247
       },
       {
-        "x": "March",
+        "x": "Mar",
         "y": 247
       },
       {
-        "x": "April",
+        "x": "Apr",
         "y": 8
       },
       {
@@ -399,31 +399,31 @@ export const LineChartData = [
         "y": 149
       },
       {
-        "x": "June",
+        "x": "Jun",
         "y": 183
       },
       {
-        "x": "July",
+        "x": "Jul",
         "y": 75
       },
       {
-        "x": "August",
+        "x": "Aug",
         "y": 291
       },
       {
-        "x": "September",
+        "x": "Sep",
         "y": 184
       },
       {
-        "x": "October",
+        "x": "Oct",
         "y": 69
       },
       {
-        "x": "November",
+        "x": "Nov",
         "y": 147
       },
       {
-        "x": "December",
+        "x": "Dec",
         "y": 296
       }
     ]

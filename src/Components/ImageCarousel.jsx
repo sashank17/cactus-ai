@@ -6,19 +6,22 @@ import Carousel from 'react-material-ui-carousel'
 
 const CarouselGrid = styled(Box)`
 	grid-column: span 6;
-	grid-row: span 2;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 20px;
+
+	@media screen and (max-width: 1024px) {
+		grid-column: span 12;
+    }
 `
 const CarouselHeader = styled(Box)`
-	margin-top: 10px;
+	margin: 10px 0px 30px;
 	padding: 0px 30px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 `
 const CarouselWrapper = styled(Carousel)`
-	margin: 15px 5px;
+	margin: 20px 5px 15px;
 `
 const CarouselImage = styled.img`
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -29,7 +32,10 @@ const CarouselImage = styled.img`
 `
 
 const ImageCarousel = (props) => {
-	const sliderItems = props.data.length > 3 ? 3 : props.data.length;
+	let sliderItems = props.data.length > 3 ? 3 : props.data.length;
+	sliderItems = props.winWidth <= 700 ? 2 : sliderItems;
+	sliderItems = props.winWidth <= 500 ? 1 : sliderItems;
+
 	const items = [];
   
 	for (let i = 0; i < props.data.length; i += sliderItems) {
@@ -38,7 +44,7 @@ const ImageCarousel = (props) => {
 			<Grid container spacing={0} display='flex' flexDirection='row' justifyContent='center' alignItems='center'>
 				{props.data.slice(i, i + sliderItems).map((item, index) => {
 					return (
-						<CarouselImage src={item.image} alt={item.title} styles={{width: '100%'}} />
+						<CarouselImage src={item.image} alt={item.title} />
 					)
 				})}
 			</Grid>

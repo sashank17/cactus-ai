@@ -12,25 +12,22 @@ const StatBoxWrapper = styled(Box)`
 const StatBox = (props) => {
     return (
         <StatBoxWrapper>
-            <Box display='flex' justifyContent='space-between'>
-                <Box>
+            <Box display='flex' justifyContent='space-between' margin='5px'>
+                <Box display='flex' flexDirection='column' justifyContent='space-between'>
                     {props.icon}
-                    <Typography variant='h6' fontWeight='bold' color='#121B28' fontFamily='inherit'>
+                    <Typography variant='h7' fontWeight='bold' color='#121B28' fontFamily='inherit'>
                         {props.title}
                     </Typography>
+                    <Typography variant="body2" color='#047c44' fontFamily='inherit'>
+                        {props.subtitle}
+                    </Typography>
                 </Box>
-                <Box>
+                <Box display='flex' flexDirection='column' justifyContent='space-between'>
                     <ProgressCircle progress={props.progress} />
+                    <Typography variant='body2' fontStyle='italic' color='#047c44' fontFamily='inherit'>
+                        {props.percentIncrease}
+                    </Typography>
                 </Box>
-            </Box>
-
-            <Box display='flex' justifyContent='space-between'>  
-                <Typography variant="body2" color='#047c44' fontFamily='inherit'>
-                    {props.subtitle}
-                </Typography>
-                <Typography variant='body2' fontStyle='italic' color='#047c44' fontFamily='inherit'>
-                    {props.percentIncrease}
-                </Typography>
             </Box>
         </StatBoxWrapper>
     )

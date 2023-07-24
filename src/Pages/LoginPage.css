@@ -1,12 +1,20 @@
 .login-screen {
-    justify-content: center;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .login-card {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0px 20px;
     width: 420px;
     padding-left: 10px;
     padding-right: 10px;
@@ -14,7 +22,6 @@
 
 .logo-container {
     padding-bottom: 40px;
-    padding-top: 100px;
 }
 
 .logo {

@@ -2,7 +2,7 @@ import React from 'react'
 import { BarChartData as data } from '../utils/ChartData'
 import { ResponsiveBar } from '@nivo/bar'
 
-const BarChart = () => {
+const BarChart = (props) => {
   return (
     <ResponsiveBar
         data={data}
@@ -64,7 +64,7 @@ const BarChart = () => {
         axisBottom={{
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: -90,
+            tickRotation: props.winWidth>= 525 && props.winWidth <= 1024 ? 0 : -90,
             legend: undefined,
             legendPosition: 'middle',
             legendOffset: 32

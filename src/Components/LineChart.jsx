@@ -2,7 +2,7 @@ import React from 'react'
 import { LineChartData as data} from '../utils/ChartData'
 import { ResponsiveLine } from '@nivo/line'
 
-const LineChart = () => {
+const LineChart = (props) => {
   return (
     <ResponsiveLine
         data={data}
@@ -59,7 +59,7 @@ const LineChart = () => {
         axisBottom={{
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: props.winWidth <= 450 ? -90 : 0,
             legend: undefined,
             legendOffset: 36,
             legendPosition: 'middle'

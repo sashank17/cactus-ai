@@ -1,11 +1,13 @@
-import { React, useState} from 'react'
+import { React, useEffect, useState} from 'react'
 import logo1 from '../../assets/cactusicon_green.png'
 import logo2 from '../../assets/cactusicon_black.png'
 import logo3 from '../../assets/cactusicon_white.png'
 import { SidebarData } from '../../utils/SidebarData'
 import MenuItem from '../MenuItem'
+import SidebarMenuButton from './SidebarMenuButton'
+import useWindowDimensions from '../../utils/windowDimensions'
 import { Box, Button, Typography, StyledEngineProvider, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton } from '@mui/material'
-import { MenuRounded, LogoutRounded } from '@mui/icons-material'
+import { LogoutRounded } from '@mui/icons-material'
 import styled from 'styled-components'
 
 
@@ -13,7 +15,7 @@ const NavIcon = styled.div`
     display: flex;
     justify-content: ${(props) => props.isCollapsed ? 'center' : 'space-between'};
     align-items: center;
-    padding: 15px;
+    padding: 10px 15px;
 	margin-bottom: 10px;
 `
 const LogoWrapper = styled.div`
@@ -34,7 +36,20 @@ const SidebarWrapper = styled.div`
     background: #121B28;
     width: ${(props) => props.isCollapsed ? '50px' : '300px'};
 	height: 100%;
-	transition: all 0.3s;
+	transition: all 0.3s ease-in-out;
+	overflow: hidden;
+	position: fixed;
+	z-index: 10;
+	top: 0;	
+	left: 0;
+
+	@media screen and (max-width: 800px) {
+		width: ${(props) => props.isCollapsed ? '0px' : '300px'};
+	}
+
+	@media screen and (max-width: 350px) {
+		width: ${(props) => props.isCollapsed ? '0px' : '250px'};
+	}
 `
 const MenuWrapper = styled(Box)`
 	width: 100%;
@@ -78,10 +93,11 @@ const Sidebar = (props) => {
 
 	const [selected, setSelected] = useState('Dashboard')
 
-    const [isCollapsed, setIsCollapsed] = useState(false)
-	const toggleSidebar = () => {
-		setIsCollapsed(!isCollapsed)
-	} 
+	const {width, height} = useWindowDimensions()
+
+	useEffect(() => {
+		width <= 1024 ? props.setIsSidebarCollapsed(true) : props.setIsSidebarCollapsed(false)
+	}, [width])
 
 	const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
 	const handleLogoutDialogClose = () => {
@@ -90,12 +106,10 @@ const Sidebar = (props) => {
 
     return (
         <>
-            <SidebarWrapper isCollapsed={isCollapsed}>
-				<NavIcon isCollapsed={isCollapsed}>
-					{ isCollapsed ? (		
-							<IconButton onClick={toggleSidebar}>
-								<MenuRounded sx={{color: '#9CFCD8'}}/>
-							</IconButton>
+            <SidebarWrapper isCollapsed={props.isSidebarCollapsed}>
+				<NavIcon isCollapsed={props.isSidebarCollapsed}>
+					{ props.isSidebarCollapsed ? (		
+							<SidebarMenuButton isSidebarCollapsed={props.isSidebarCollapsed} setIsSidebarCollapsed={props.setIsSidebarCollapsed}/>
 						) 
 						: (
 							<>
@@ -105,9 +119,7 @@ const Sidebar = (props) => {
 										cactus.ai
 									</LogoLabel>
 								</LogoWrapper>
-								<IconButton onClick={toggleSidebar}>
-									<MenuRounded sx={{color: '#9CFCD8'}}/>
-								</IconButton>
+								<SidebarMenuButton setIsSidebarCollapsed={props.setIsSidebarCollapsed} setIsSidebarOpen={props.setIsSidebarOpen} />
 							</>
 						)
 					}
@@ -116,19 +128,19 @@ const Sidebar = (props) => {
 					<Box width='100%'>
 						{SidebarData.map((item, index) => {
 							return <MenuItem item={item} key={index} setHeaderTitle={props.setHeaderTitle} 
-							selected={selected} setSelected={setSelected} isCollapsed={isCollapsed}/>
+							selected={selected} setSelected={setSelected} isCollapsed={props.isSidebarCollapsed}/>
 						})}
 					</Box>
 					<StyledEngineProvider>
-						{ isCollapsed ? (
+						{ props.isSidebarCollapsed ? (
 								<LogoutIconButton onClick={() => setLogoutDialogOpen(true)}
-								disableElevation disableRipple disableFocusRipple>
+								disableRipple disableFocusRipple>
 									<LogoutRounded sx={{fontSize: '20px', marginRight: '-3px'}}/>
 								</LogoutIconButton>
 							)
 							: (
 								<LogoutButton variant='text' onClick={() => setLogoutDialogOpen(true)}
-								disableElevation disableRipple disableFocusRipple 
+								disableRipple disableFocusRipple 
 								startIcon={<LogoutRounded sx={{fontSize: '20px', marginRight: '-3px'}}/>}>
 									Logout
 								</LogoutButton>
