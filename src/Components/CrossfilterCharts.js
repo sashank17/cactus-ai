@@ -1,7 +1,6 @@
 import * as dc from 'dc'
 import 'dc/dist/style/dc.min.css'
 import * as d3 from 'd3'
-import { legendColor } from 'd3-svg-legend'
 import './CrossfilterCharts.css'
 
 
@@ -171,14 +170,44 @@ export const itemBarChartFunc = (ref, cx, min, max) => {
     return itemBarChart
 }
 
-export const countyPieChartFunc = (ref, cx, min, max) => {
-    const countyDimension = cx.dimension((d) => d.County)
-    const countyGroup = countyDimension.group().reduceSum((d) => d.Sales)
+// export const countyPieChartFunc = (ref, cx, min, max) => {
+//     const countyDimension = cx.dimension((d) => d.County)
+//     const countyGroup = countyDimension.group().reduceSum((d) => d.Sales)
 
-    const countyPieChart = dc.pieChart(ref)
-    countyPieChart
-        .dimension(countyDimension)
-        .group(remove_empty_bins(countyGroup))
+//     const countyPieChart = dc.pieChart(ref)
+//     countyPieChart
+//         .dimension(countyDimension)
+//         .group(remove_empty_bins(countyGroup))
+//         .slicesCap(5)
+//         .renderLabel(false)
+//         // .innerRadius(100)
+//         .legend(dc.legend().highlightSelected(true).y(10))
+//         .title((d) => {
+//             const formattedValue = d.value ? d3.format('.2s')(d.value) : 0
+//             return `County: ${d.key}, Total Sales: $${formattedValue}`
+//         })
+//         .on('pretransition', (chart) => {
+//             const totalSales = chart.group().all().reduce((acc, curr) => acc + curr.value, 0)
+//             chart.selectAll('.dc-legend-item text')
+//                 .text((d) => {
+//                     var percentage = (d.data / totalSales) * 100
+//                     return d.name + ' - ' + percentage.toFixed(1) + '%'
+//                 })
+//         })
+        
+
+//     return countyPieChart
+// }
+
+
+export const agePieChartFunc = (ref, cx, min, max) => {
+    const ageDimension = cx.dimension((d) => d.AgeCategory)
+    const ageGroup = ageDimension.group().reduceSum((d) => d.Sales)
+
+    const agePieChart = dc.pieChart(ref)
+    agePieChart
+        .dimension(ageDimension)
+        .group(remove_empty_bins(ageGroup))
         .slicesCap(5)
         .renderLabel(false)
         // .innerRadius(100)
@@ -188,11 +217,6 @@ export const countyPieChartFunc = (ref, cx, min, max) => {
             return `County: ${d.key}, Total Sales: $${formattedValue}`
         })
         .on('pretransition', (chart) => {
-            // chart.selectAll('text.pie-slice')
-            //     .text((d) => {
-            //         return dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%'
-            //     })
-            //     .style('fill', 'black')
             const totalSales = chart.group().all().reduce((acc, curr) => acc + curr.value, 0)
             chart.selectAll('.dc-legend-item text')
                 .text((d) => {
@@ -201,8 +225,7 @@ export const countyPieChartFunc = (ref, cx, min, max) => {
                 })
         })
         
-
-    return countyPieChart
+    return agePieChart
 }
 
 export const cityPieChartFunc = (ref, cx, min, max) => {

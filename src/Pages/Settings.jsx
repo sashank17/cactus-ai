@@ -18,11 +18,16 @@ const SettingsHeader = styled(Typography)`
 	font-family: inherit;
 	font-weight: bold;
 	color: #121B28;
+	padding-left: 10px;
 `
 const ChangePasswordButton = styled(Button)`
 	text-transform: none;
 	margin: 20px;
 	background-color: #121B28;
+
+	&.MuiButton-root:hover {
+		background: #121B28;
+	}
 `
 
 const Settings = (props) => {
@@ -109,7 +114,6 @@ const Settings = (props) => {
 								placeholder="Current Password"
 								type="password"
 								fullWidth
-								InputProps={{disableUnderline: true}}
 								onChange={(event) => setOldPassword(event.target.value)}
 							/>
 							
@@ -119,7 +123,6 @@ const Settings = (props) => {
 								placeholder="New Password"
 								type="password"
 								fullWidth
-								InputProps={{disableUnderline: true}}
 								onChange={(event) => setNewPassword(event.target.value)}
 							/>
 							
@@ -129,7 +132,6 @@ const Settings = (props) => {
 								placeholder="Confirm New Password"
 								type="password"
 								fullWidth
-								InputProps={{disableUnderline: true}}
 								onChange={(event) => setConfirmPassword(event.target.value)}
 							/>
 
@@ -141,10 +143,10 @@ const Settings = (props) => {
 
 						</DialogContent>
 						<DialogActions>
-							<Button onClick={handleDialogClose} >
+							<Button sx={{fontFamily: 'inherit', color: '#121B28'}} onClick={handleDialogClose} >
 								Cancel
 							</Button>
-							<Button onClick={handlePasswordChange}>
+							<Button sx={{fontFamily: 'inherit', color: '#121B28'}} onClick={handlePasswordChange}>
 								Save
 							</Button>
 						</DialogActions>

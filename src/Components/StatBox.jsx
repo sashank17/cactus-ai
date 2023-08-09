@@ -17,16 +17,17 @@ const StatBox = (props) => {
                     <Typography variant="h7" fontWeight='bold' color='#121B28' fontFamily='inherit'>
                         {props.subtitle}
                     </Typography>
-                    {props.icon}
+                    
                     <Typography variant='h7' fontWeight='bold' color='#047c44' fontFamily='inherit'>
                         {props.title}
                     </Typography>
                 </Box>
                 <Box display='flex' flexDirection='column' justifyContent='space-between'>
-                    <ProgressCircle progress={props.progress} />
+                    {props.icon}
+                    {/* <ProgressCircle progress={props.progress} />
                     <Typography variant='body2' fontStyle='italic' color='#047c44' fontFamily='inherit'>
                         {props.percentIncrease}
-                    </Typography>
+                    </Typography> */}
                 </Box>
             </Box>
         </StatBoxWrapper>

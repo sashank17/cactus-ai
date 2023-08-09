@@ -10,7 +10,7 @@
 }
 
 #cityPieChart .dc-legend-item text,
-#countyPieChart .dc-legend-item text {
+#agePieChart .dc-legend-item text {
     transform: translateY(3px);
     font-size: 11px;
 }

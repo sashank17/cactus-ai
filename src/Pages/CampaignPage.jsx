@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { IconButton, Box, Button, Grid, Typography, TextField, FormControl, InputLabel, Select, MenuItem, Checkbox } from '@mui/material'
+import CampaignCSV from '../utils/Campaign.csv'
+import { IconButton, Box, Button, Grid, Typography, TextField, FormControl, InputLabel, Select, MenuItem, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText } from '@mui/material'
 import { AddRounded, DownloadRounded, AccountCircleRounded } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import useWindowDimensions from '../utils/windowDimensions'
 
 const CampaignHeader = styled(Box)`
     display: flex;
@@ -24,6 +27,21 @@ const DownloadButton = styled(Button)`
     height: 50px;
     color: #047c44;
     border-color: #047c44;
+
+    &.MuiButton-root:hover {
+		background: none;
+        border-color: #047c44;
+	}
+
+    &.MuiButton-root:active {
+		background: none;
+        border-color: #047c44;
+	}
+
+    @media screen and (max-width: 500px) {
+		width: 40%;
+        font-size: small;
+    }
 `
 const CampaignDashboardContainer = styled(Grid)`
     width: 100%;
@@ -32,7 +50,7 @@ const CampaignDashboardContainer = styled(Grid)`
 const CampaignGridBox = styled(Grid)`
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 20px;
-    height: 740px;
+    height: ${(props) => props.winWidth < 900 ? 'auto' : '740px'};
     padding: 10px;
 `
 const Text = styled(Typography)`
@@ -57,6 +75,16 @@ const CampaignPage = () => {
         setPeriod(event.target.value)
     }
 
+    const [downloadDialogOpen, setDownloadDialogOpen] = useState(false)
+    const handleDownloadDialogClose = () => {
+        setDownloadDialogOpen(false)
+    }
+    const handleDownloadDialogOpen = () => {
+        setDownloadDialogOpen(true)
+    }
+
+    const {width, height} = useWindowDimensions()
+
     return (
         <>
             <CampaignHeader>
@@ -64,23 +92,39 @@ const CampaignPage = () => {
                     <IconButton size='large'>
                         <AddRounded sx={{fontSize: '36px'}}/>
                     </IconButton>
-                    <Typography sx={{fontFamily: 'inherit', fontWeight: 'bold'}} variant='h4'>Create Campaign</Typography>
+                    <Typography sx={{fontFamily: 'inherit', fontWeight: 'bold'}} variant={width<=500?'h6':'h4'}>Create Campaign</Typography>
                 </Box>
-                <DownloadButton variant='outlined' endIcon={<DownloadRounded color='#047c44'/>}>
+                <DownloadButton variant='outlined' onClick={handleDownloadDialogOpen} endIcon={<DownloadRounded color='#047c44'/>}>
                     Download CSV
                 </DownloadButton>
+                <Dialog open={downloadDialogOpen} onClose={handleDownloadDialogClose}>
+                    <DialogTitle fontFamily='inherit'>
+                        Download CSV
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText fontFamily='inherit'>
+                            Confim that you want to download Campaign.csv
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button sx={{fontFamily: 'inherit', color: '#121B28'}} onClick={handleDownloadDialogClose}> No </Button>
+                        <Link to={CampaignCSV} download="Campaign.csv" target="_blank" rel="noreferrer">
+                            <Button sx={{fontFamily: 'inherit', color: '#121B28'}} autoFocus> Yes </Button>
+                        </Link>
+                    </DialogActions>
+                </Dialog>
             </CampaignHeader>
             <CampaignDashboardContainer container spacing={2}>
-                <Grid item xs={9}>
-                    <CampaignGridBox>
+                <Grid item xs={12} md={9}>
+                    <CampaignGridBox winWidth={width}>
 
                         <Title variant='h6'>Audience</Title>
                         <Text variant='body1' color='#047c44'>Select how you want to target.</Text>
 
-                        <Box sx={{margin: '10px', background: '#dadcdf', width: '25%', height: '100px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexDirection: 'row'}}>
+                        <Box sx={{margin: '10px', background: '#dadcdf', width: width<=500?'50%':'25%', height: '100px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexDirection: 'row'}}>
                             <Box sx={{ margin:'20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
                                 <AccountCircleRounded sx={{fontSize: '30px'}}/>
-                                <Text sx={{paddingTop: '5px'}} variant='body2'>Profile Based</Text>
+                                <Text variant='body2'>Profile Based</Text>
                             </Box>
                             <Checkbox />
                         </Box>
@@ -157,8 +201,8 @@ const CampaignPage = () => {
 
                     </CampaignGridBox>
                 </Grid>
-                <Grid item xs={3}>
-                    <CampaignGridBox display='flex' justifyItems='center' flexDirection='column'>
+                <Grid item xs={12} md={3} >
+                    <CampaignGridBox winWidth={width} display='flex' justifyItems='center' flexDirection='column'>
                         <Title variant='h6'> Forecasted Results </Title>
 
                         <FormControl fullWidth sx={{margin: '10px 0px'}}>

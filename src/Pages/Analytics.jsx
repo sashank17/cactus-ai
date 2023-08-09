@@ -3,10 +3,11 @@ import * as d3 from 'd3'
 import crossfilter from 'crossfilter2/crossfilter'
 import * as dc from 'dc'
 import 'dc/dist/style/dc.min.css'
-import csv from '../utils/dashboard-data.csv'
+// import csv from '../utils/dashboard-data.csv'
+import csv from '../utils/test-data.csv'
 import map from '../utils/us-states.json'
 import { Box, Grid, Button } from '@mui/material'
-import { mapChartFunc, timeSeriesChartFunc, brandBarChartFunc, retailerBarChartFunc, categoryBarChartFunc, itemBarChartFunc, countyPieChartFunc, cityPieChartFunc, dataTableFunc } from '../Components/CrossfilterCharts'
+import { mapChartFunc, timeSeriesChartFunc, brandBarChartFunc, retailerBarChartFunc, categoryBarChartFunc, itemBarChartFunc, agePieChartFunc, cityPieChartFunc, dataTableFunc } from '../Components/CrossfilterCharts'
 import styled from 'styled-components'
 import debounce from 'lodash.debounce'
 
@@ -61,7 +62,8 @@ const AnalyticsDashboard = (props) => {
     const retailerBarChartRef = useRef(null)
     const categoryBarChartRef = useRef(null)
     const itemBarChartRef = useRef(null)
-    const countyPieChartRef = useRef(null)
+    // const countyPieChartRef = useRef(null)
+    const agePieChartRef = useRef(null)
     const cityPieChartRef = useRef(null)
     const dataTableRef = useRef(null)
 
@@ -73,7 +75,8 @@ const AnalyticsDashboard = (props) => {
     const [retailerBarChartContainerSize, setRetailerBarChartContainerSize] = useState({width: 0, height: 0})
     const [categoryBarChartContainerSize, setCategoryBarChartContainerSize] = useState({width: 0, height: 0})
     const [itemBarChartContainerSize, setItemBarChartContainerSize] = useState({width: 0, height: 0})
-    const [countyPieChartContainerSize, setCountyPieChartContainerSize] = useState({width: 0, height: 0})
+    // const [countyPieChartContainerSize, setCountyPieChartContainerSize] = useState({width: 0, height: 0})
+    const [agePieChartContainerSize, setAgePieChartContainerSize] = useState({width: 0, height: 0})
     const [cityPieChartContainerSize, setCityPieChartContainerSize] = useState({width: 0, height: 0})
     const [dataTableContainerSize, setDataTableContainerSize] = useState({width: 0, height: 0})
 
@@ -83,7 +86,7 @@ const AnalyticsDashboard = (props) => {
             const dateFormatParser = d3.timeParse('%d/%m/%Y')
 
             data.forEach((d) => {
-                d.Sales = +d.Sales
+                d.Sales = +(d.Sales.slice(1))
                 d.date = dateFormatParser(d.Date)
                 d.month = d3.timeMonth(d.date)
             })
@@ -115,7 +118,8 @@ const AnalyticsDashboard = (props) => {
         setRetailerBarChartContainerSize(getParentSize(retailerBarChartRef))
         setCategoryBarChartContainerSize(getParentSize(categoryBarChartRef))
         setItemBarChartContainerSize(getParentSize(itemBarChartRef))
-        setCountyPieChartContainerSize(getParentSize(countyPieChartRef))
+        // setCountyPieChartContainerSize(getParentSize(countyPieChartRef))
+        setAgePieChartContainerSize(getParentSize(agePieChartRef))
         setCityPieChartContainerSize(getParentSize(cityPieChartRef))
         setDataTableContainerSize(getParentSize(dataTableRef))
     }
@@ -130,7 +134,8 @@ const AnalyticsDashboard = (props) => {
             const retailerBarChart = retailerBarChartFunc(retailerBarChartRef.current, cx, minSales, maxSales)
             const categoryBarChart = categoryBarChartFunc(categoryBarChartRef.current, cx, minSales, maxSales)
             const itemBarChart = itemBarChartFunc(itemBarChartRef.current, cx, minSales, maxSales)
-            const countyPieChart = countyPieChartFunc(countyPieChartRef.current, cx, minSales, maxSales)
+            // const countyPieChart = countyPieChartFunc(countyPieChartRef.current, cx, minSales, maxSales)
+            const agePieChart = agePieChartFunc(agePieChartRef.current, cx, minSales, maxSales)
             const cityPieChart = cityPieChartFunc(cityPieChartRef.current, cx, minSales, maxSales)
             const dataTable = dataTableFunc(dataTableRef.current, cx, minSales, maxSales)
 
@@ -139,13 +144,16 @@ const AnalyticsDashboard = (props) => {
             const handleResize = debounce(() => {
                 setParentSizes()
 
-                if (countyPieChartContainerSize.width < 600 || cityPieChartContainerSize.width < 600) {
-                    countyPieChart.radius(90)
+                if (agePieChartContainerSize.width < 600 || cityPieChartContainerSize.width < 600) {
+                    agePieChart.radius(90)
                     cityPieChart.radius(90).innerRadius(55)
                 }
 
-                if (mapChartContainerSize.width < 400) {
-                    mapChart.width(mapChartContainerSize.width * 0.9).projection(d3.geoAlbersUsa().scale(450).translate([mapChart.width() / 2, mapChart.height() / 2 - 30]))
+                if (mapChartContainerSize.width < 300) {
+                    mapChart.width(mapChartContainerSize.width * 0.9).projection(d3.geoAlbersUsa().scale(350).translate([mapChart.width() / 2, mapChart.height() / 2 - 30]))  
+                }
+                else if (mapChartContainerSize.width < 475) {
+                    mapChart.width(mapChartContainerSize.width * 0.9).projection(d3.geoAlbersUsa().scale(525).translate([mapChart.width() / 2, mapChart.height() / 2 - 30]))
                 }
                 else if (mapChartContainerSize.width < 1200 && mapChartContainerSize.width > 600) {
                     mapChart.width(mapChartContainerSize.width * 0.9).projection(d3.geoAlbersUsa().scale(650).translate([mapChart.width() / 2, mapChart.height() / 2 - 30]))
@@ -160,7 +168,8 @@ const AnalyticsDashboard = (props) => {
                 retailerBarChart.width(retailerBarChartContainerSize.width).height(250)
                 categoryBarChart.width(categoryBarChartContainerSize.width).height(250)
                 itemBarChart.width(itemBarChartContainerSize.width).height(250)
-                countyPieChart.width(countyPieChartContainerSize.width * 0.9).height(300)
+                // countyPieChart.width(countyPieChartContainerSize.width * 0.9).height(300)
+                agePieChart.width(agePieChartContainerSize.width * 0.9).height(300)
                 cityPieChart.width(cityPieChartContainerSize.width * 0.9).height(300)
 
                 dc.renderAll()
@@ -174,7 +183,7 @@ const AnalyticsDashboard = (props) => {
                 dc.chartRegistry.clear()
             }
         }
-    }, [props.renderDashboard, cx, mapChartContainerSize.width, timeSeriesContainerSize.width, brandBarChartContainerSize.width, retailerBarChartContainerSize.width, categoryBarChartContainerSize.width, itemBarChartContainerSize.width, countyPieChartContainerSize.width, cityPieChartContainerSize.width])
+    }, [props.renderDashboard, cx, mapChartContainerSize.width, timeSeriesContainerSize.width, brandBarChartContainerSize.width, retailerBarChartContainerSize.width, categoryBarChartContainerSize.width, itemBarChartContainerSize.width, agePieChartContainerSize.width, cityPieChartContainerSize.width])
 
     const handleResetClick = () => {
         dc.filterAll()
@@ -226,10 +235,18 @@ const AnalyticsDashboard = (props) => {
                     <ChartTitle className="chart-title">Top 10 Items</ChartTitle>
                 </ChartGrid>
             </Grid>
-            <Grid item xs={12} lg={6}>
+            {/* <Grid item xs={12} lg={6}>
                 <ChartGrid pie id="countyPieChart" ref={countyPieChartRef}>
                     <ChartHeader>
                         <ChartTitle className="chart-title">County-wise Sales Distribution |</ChartTitle>
+                        <Button sx={{textTransform: 'none'}} onClick={handleResetClick}>reset</Button>
+                    </ChartHeader>
+                </ChartGrid>
+            </Grid> */}
+            <Grid item xs={12} lg={6}>
+                <ChartGrid pie id="agePieChart" ref={agePieChartRef}>
+                    <ChartHeader>
+                        <ChartTitle className="chart-title">Age-wise Distribution |</ChartTitle>
                         <Button sx={{textTransform: 'none'}} onClick={handleResetClick}>reset</Button>
                     </ChartHeader>
                 </ChartGrid>
