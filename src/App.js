@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import LoginPage from "./Pages/LoginPage"
 import Dashboard from './Pages/Dashboard'
+import AnalyticsDashboard from './Pages/Analytics'
 import Settings from './Pages/Settings'
+import AIStudio from './Pages/AIStudio'
+import CampaignPage from './Pages/CampaignPage'
 import Sidebar from './Components/global/Sidebar'
 import Header from './Components/global/Header'
 import useWindowDimensions from './utils/windowDimensions'
@@ -27,9 +30,8 @@ const Content = styled.main`
 function App() {
   	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const [headerTitle, setHeaderTitle] = useState("Dashboard")
-  	const [user, setUser] = useState("")
+  	const [user, setUser] = useState({})
 	const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
-
 
 	const {width, height} = useWindowDimensions()
 
@@ -44,10 +46,14 @@ function App() {
 					<div className='app'>
 						<Sidebar setIsLoggedIn={setIsLoggedIn} setHeaderTitle={setHeaderTitle} isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed}/>
 						<Content isSidebarCollapsed={isSidebarCollapsed}>
-							<Header title={headerTitle} user={user} isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed}/>
+							<Header title={headerTitle} username={user.username} isSidebarCollapsed={isSidebarCollapsed} setIsSidebarCollapsed={setIsSidebarCollapsed}/>
 							<Routes>
-								<Route path='/' element={<Dashboard />} />
-								<Route path='/settings' element={<Settings />} />
+								<Route path='/' element={<Dashboard renderCarousel={isSidebarCollapsed}/>} />
+								<Route path='/settings' element={<Settings password={user.password}/>} />
+								<Route path='/analytics' element={<AnalyticsDashboard renderDashboard={isSidebarCollapsed}/>} />
+								<Route path='/aistudio' element={<AIStudio />} />
+								<Route path='/campaign' element={<CampaignPage />} />
+								<Route path='/analytics' element={<AnalyticsDashboard renderDashboard={isSidebarCollapsed}/>} />
 							</Routes>
 						</Content>
 					</div>

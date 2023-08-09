@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './LoginPage.css'
 import logo from '../assets/logo.png'
-import { database } from '../utils/database'
+import users from '../utils/user-data.json'
 
 import { Box, Button, IconButton, TextField, InputAdornment, StyledEngineProvider } from '@mui/material'
 import { AccountCircleRounded, LockRounded, VisibilityOffRounded, VisibilityRounded } from '@mui/icons-material';
@@ -40,7 +40,7 @@ const LoginPage = (props) => {
 		}
 
 		// Search for user credentials
-		const currentUser = database.find((user) => user.username === username && user.password === password)
+		const currentUser = users.find((user) => user.username === username && user.password === password)
 
 		if(!currentUser) {
 			// Invalid User
@@ -48,7 +48,7 @@ const LoginPage = (props) => {
 		}
 		else {
 			setErrorMessages({})
-			props.setUser(username)
+			props.setUser({'username': username, 'password': password})
 			props.setIsLoggedIn(true)
 		}
     }
@@ -68,9 +68,9 @@ const LoginPage = (props) => {
 					</div>
 					<Box component='form' onSubmit={handleSubmit}>
 						<StyledEngineProvider injectFirst>
-							<div className='input-container'>
+							<div className='input-container' id='username'>
 								<TextField type="text" fullWidth placeholder='Username' 
-								name='username' id='username' value={username} 
+								name='username' value={username} 
 								onChange={(event) => setUsername(event.target.value)}
 								variant='standard'
 								InputProps={{
@@ -84,9 +84,9 @@ const LoginPage = (props) => {
 								/>
 							</div>
 							{renderErrorMsg("noUsername")}
-							<div className="input-container">
+							<div className="input-container" id='password'>
 								<TextField type={showPassword ? 'text' : 'password'} fullWidth placeholder='Password' 
-								name='password' id='password' value={password} 
+								name='password' value={password} 
 								onChange={(event) => setPassword(event.target.value)}
 								variant='standard'
 								InputProps={{

@@ -43,7 +43,8 @@
     padding-left: 5px;
 } */
 
-.MuiInputBase-root {
+#username .MuiInputBase-root,
+#password .MuiInputBase-root {
     border-radius: 25px;
     background-color: #D3CCCC;
     height: 50px;

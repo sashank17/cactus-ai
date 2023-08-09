@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import useParentSize from '../utils/parentDimensions'
 import { Box, Typography, Grid } from '@mui/material'
 import styled from 'styled-components'
 import Carousel from 'react-material-ui-carousel'
@@ -8,10 +9,6 @@ const CarouselGrid = styled(Box)`
 	grid-column: span 6;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 20px;
-
-	@media screen and (max-width: 1024px) {
-		grid-column: span 12;
-    }
 `
 const CarouselHeader = styled(Box)`
 	margin: 10px 0px 30px;
@@ -32,11 +29,43 @@ const CarouselImage = styled.img`
 `
 
 const ImageCarousel = (props) => {
-	let sliderItems = props.data.length > 3 ? 3 : props.data.length;
-	sliderItems = props.winWidth <= 700 ? 2 : sliderItems;
-	sliderItems = props.winWidth <= 500 ? 1 : sliderItems;
+	const carouselRef = useRef(null)
+	const [carouselDim, setCarouselDim] = useState({width: 0, height: 0})
+	const [sliderItems, setSliderItems] = useState(props.data.length > 3 ? 3 : props.data.length)
 
-	const items = [];
+	useEffect(() => {
+
+		const handleResize = () =>{
+			if (carouselRef.current) {
+				const {width, height} = carouselRef.current.getBoundingClientRect()
+				setCarouselDim({width, height})
+			}
+
+			if (carouselDim.width <= 400) {
+				setSliderItems(1)
+			}
+			else if (carouselDim.width <= 600) {
+				setSliderItems(2)
+			}
+		}
+
+		handleResize()
+
+		console.log(props.renderCarousel)
+		console.log(carouselDim.width)
+		console.log(sliderItems)
+
+		window.addEventListener('resize', handleResize)
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [carouselDim.width, props.renderCarousel])
+
+
+	// sliderItems = carouselDim.width <= 600 ? 2 : sliderItems
+	// sliderItems = carouselDim.width <= 400 ? 1 : sliderItems	
+
+	const items = []
   
 	for (let i = 0; i < props.data.length; i += sliderItems) {
 	  if (i % sliderItems === 0) {
@@ -53,7 +82,7 @@ const ImageCarousel = (props) => {
 	}  
 
     return (
-        <CarouselGrid>
+        <CarouselGrid ref={carouselRef}>
             <CarouselHeader>
                 <Typography variant='h6' fontFamily='inherit' fontWeight='600' color='#121B28'>
                     {props.title}

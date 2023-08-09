@@ -106,7 +106,7 @@ const Sidebar = (props) => {
 
     return (
         <>
-            <SidebarWrapper isCollapsed={props.isSidebarCollapsed}>
+            <SidebarWrapper id="sidebar" isCollapsed={props.isSidebarCollapsed}>
 				<NavIcon isCollapsed={props.isSidebarCollapsed}>
 					{ props.isSidebarCollapsed ? (		
 							<SidebarMenuButton isSidebarCollapsed={props.isSidebarCollapsed} setIsSidebarCollapsed={props.setIsSidebarCollapsed}/>

@@ -97,7 +97,7 @@ const Dashboard = (props) => {
 				<ChartHeader>
 					<Box>
 						<Typography variant="h6" fontFamily='inherit' fontWeight='600' color='#121B28'>
-							Revenue Generated
+							Transaction Volume
 						</Typography>
 						<Typography variant="h5" fontFamily='inherit' fontWeight='500' color='#047c44'>
 							$ 59,340
@@ -131,8 +131,8 @@ const Dashboard = (props) => {
 				</Box>
 			</BarChartGrid>
 
-			<ImageCarousel title='Top Brands this week' data={BrandsData} winWidth={width}/>
-			<ImageCarousel title='Top Retailers this week' data={RetailersData} winWidth={width}/>
+			<ImageCarousel title='Top Brands this week' data={BrandsData} renderCarousel={props.renderCarousel} winWidth={width}/>
+			<ImageCarousel title='Top Retailers this week' data={RetailersData} renderCarousel={props.renderCarousel} winWidth={width}/>
 
 		</DashboardGrid>
 	)

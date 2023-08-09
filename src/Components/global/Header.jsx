@@ -72,7 +72,7 @@ const Header = (props) => {
 					<>
 						<Typography variant='h4' style={headerFontStyle}>{props.title}</Typography>
 						<AccountWrapper>
-							<Typography variant='h6' style={headerFontStyle}>{props.user}</Typography>
+							<Typography variant='h6' style={headerFontStyle}>{props.username}</Typography>
 							<AccountCircleRounded sx={{color: '#ffffff'}}/>
 						</AccountWrapper>
 					</>

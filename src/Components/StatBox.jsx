@@ -14,12 +14,12 @@ const StatBox = (props) => {
         <StatBoxWrapper>
             <Box display='flex' justifyContent='space-between' margin='5px'>
                 <Box display='flex' flexDirection='column' justifyContent='space-between'>
-                    {props.icon}
-                    <Typography variant='h7' fontWeight='bold' color='#121B28' fontFamily='inherit'>
-                        {props.title}
-                    </Typography>
-                    <Typography variant="body2" color='#047c44' fontFamily='inherit'>
+                    <Typography variant="h7" fontWeight='bold' color='#121B28' fontFamily='inherit'>
                         {props.subtitle}
+                    </Typography>
+                    {props.icon}
+                    <Typography variant='h7' fontWeight='bold' color='#047c44' fontFamily='inherit'>
+                        {props.title}
                     </Typography>
                 </Box>
                 <Box display='flex' flexDirection='column' justifyContent='space-between'>
