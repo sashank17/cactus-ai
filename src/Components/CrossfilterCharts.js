@@ -41,6 +41,8 @@ export const timeSeriesChartFunc = (ref1, ref2, cx, min, max, minDate, maxDate) 
     const timeSeriesDimension = cx.dimension((d) => d.month)
     const timeSeriesGroup = timeSeriesDimension.group().reduceSum((d) => d.Sales) 
 
+    const formatMonth = d3.timeFormat("%b '%y")
+
     const rangeChart = dc.barChart(ref2)
     rangeChart
         .dimension(timeSeriesDimension)
@@ -53,6 +55,7 @@ export const timeSeriesChartFunc = (ref1, ref2, cx, min, max, minDate, maxDate) 
         .alwaysUseRounding(true)
         .xUnits(d3.timeMonths)
         .margins({ top: 0, right: 0, bottom: 50, left: 70 })
+        .xAxis().tickFormat((d) => formatMonth(d))
 
     const timeSeriesChart = dc.lineChart(ref1)
     timeSeriesChart
@@ -78,6 +81,8 @@ export const timeSeriesChartFunc = (ref1, ref2, cx, min, max, minDate, maxDate) 
         .curve(d3.curveCardinal)
         .evadeDomainFilter(true)
         .rangeChart(rangeChart)
+    timeSeriesChart.xAxis().tickFormat((d) => formatMonth(d))
+    timeSeriesChart.yAxis().tickFormat((d) => d ? d3.format('.2s')(d) : 0)
 
     return [rangeChart, timeSeriesChart]
 }
@@ -229,7 +234,7 @@ export const agePieChartFunc = (ref, cx, min, max) => {
 }
 
 export const cityPieChartFunc = (ref, cx, min, max) => {
-    const cityDimension = cx.dimension((d) => d.City)
+    const cityDimension = cx.dimension((d) => d.CityName)
     const cityGroup = cityDimension.group().reduceSum((d) => d.Sales)
 
     const cityPieChart = dc.pieChart(ref)
@@ -248,11 +253,6 @@ export const cityPieChartFunc = (ref, cx, min, max) => {
             return `City: ${d.key}, Total Sales: $${formattedValue}`
         })
         .on('pretransition', (chart) => {
-            // chart.selectAll('text.pie-slice')
-            //     .text((d) => {
-            //         return dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%'
-            //     })
-            //     .style('fill', 'black')
             const totalSales = chart.group().all().reduce((acc, curr) => acc + curr.value, 0)
             chart.selectAll('.dc-legend-item text')
                 .text((d) => {
@@ -270,15 +270,19 @@ export const dataTableFunc = (ref, cx) => {
     const dataTable = dc.dataTable(ref)
     dataTable
         .dimension(tableDimension)
-        .columns([{
+        .columns(['InvoiceNo', {
             label: 'Date',
             format: (d) => {
                 var dateFormat = d3.format('02d')
                 return dateFormat((d.date.getDate())) + '/' + dateFormat((d.date.getMonth() + 1)) + '/' + d.date.getFullYear()
             }
         },
-        'Item', 'State', 'County', 'City', 'Brand', 'Retailer', 'Category', {
-            label: 'Total Sales',
+        'AgeCategory', 'Item', 'State', 'County', {
+            label: 'City',
+            format: (d) => d.CityName
+        }, 
+        'Brand', 'Retailer', 'Category', {
+            label: 'Total',
             format: (d) => `$${d.Sales.toFixed(2)}`
         }])
         .sortBy((d) => d.date)

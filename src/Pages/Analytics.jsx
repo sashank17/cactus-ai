@@ -3,8 +3,8 @@ import * as d3 from 'd3'
 import crossfilter from 'crossfilter2/crossfilter'
 import * as dc from 'dc'
 import 'dc/dist/style/dc.min.css'
-// import csv from '../utils/dashboard-data.csv'
-import csv from '../utils/test-data.csv'
+import csv from '../utils/analytics-database.csv'
+// import csv from '../utils/test-data.csv'
 import map from '../utils/us-states.json'
 import { Box, Grid, Button } from '@mui/material'
 import { mapChartFunc, timeSeriesChartFunc, brandBarChartFunc, retailerBarChartFunc, categoryBarChartFunc, itemBarChartFunc, agePieChartFunc, cityPieChartFunc, dataTableFunc } from '../Components/CrossfilterCharts'
@@ -29,7 +29,7 @@ const TableGrid = styled(Box)`
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 100%;
-    height: 400px;
+    height: auto;
     overflow-y: auto;
 `
 const ChartTitle = styled(Box)`
@@ -83,11 +83,11 @@ const AnalyticsDashboard = (props) => {
     useEffect(() => {
         (async () => {
             const data = await d3.csv(csv)
-            const dateFormatParser = d3.timeParse('%d/%m/%Y')
+            const dateFormatParser = d3.timeParse('%d/%m/%Y %H:%M')
 
             data.forEach((d) => {
-                d.Sales = +(d.Sales.slice(1))
-                d.date = dateFormatParser(d.Date)
+                d.Sales = +(d.Total.slice(1).replace(/\,/g, ''))
+                d.date = dateFormatParser(d.InvoiceDate)
                 d.month = d3.timeMonth(d.date)
             })
 
@@ -202,15 +202,10 @@ const AnalyticsDashboard = (props) => {
             </Grid>
             <Grid item xs={12} lg={6}>
                 <ChartGrid ref={timeSeriesContainerRef}>
-                    {
-                        minDate && maxDate
-                            ? 
-                            <ChartHeader>
-                                <ChartTitle className="chart-title">{"Total Sales " + minDate.getFullYear() + ' - ' + maxDate.getFullYear() + " |"}</ChartTitle>
-                                <Button sx={{textTransform: 'none'}} onClick={handleResetClick}>reset</Button>
-                            </ChartHeader>
-                            : null
-                    }
+                    <ChartHeader>
+                        <ChartTitle className="chart-title">Total Sales 2023 |</ChartTitle>
+                        <Button sx={{textTransform: 'none'}} onClick={handleResetClick}>reset</Button>
+                    </ChartHeader>
                     <div id="timeSeriesChart" ref={timeSeriesChartRef} />
                     <div id="rangeChart" ref={rangeChartRef} />
                 </ChartGrid>
